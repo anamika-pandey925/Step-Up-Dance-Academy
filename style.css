@@ -635,7 +635,10 @@ input,select,textarea{font-family:var(--font-sans)}
   .hero-stats{gap:16px; flex-wrap:wrap;}
   .hero-stats .stat-divider{display:none;}
   .about-grid,.wedding-grid{display:flex !important;flex-direction:column !important;gap:48px}
-  .about-visual{height:300px}
+  .about-visual{height:auto !important; margin-bottom: 20px;}
+  .student-showcase-row, .student-mini-card-row { flex-direction: column !important; align-items: center !important; overflow-x: visible !important; }
+  .student-mini-card { flex: 0 0 auto !important; width: 100% !important; max-width: 280px; margin-bottom: 24px; }
+  .student-mini-card video { height: 450px !important; }
   .classes-grid,.fac-grid,.pricing-grid,.reviews-grid{grid-template-columns:repeat(2,1fr)}
   .contact-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
@@ -658,16 +661,10 @@ input,select,textarea{font-family:var(--font-sans)}
   .hero-btn{width:100%; justify-content:center;}
   .classes-grid,.fac-grid,.pricing-grid,.reviews-grid,.ig-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
-  .nav{padding:12px 20px}
-  .nav-logo{font-size:1.1rem; gap: 8px;}
-  .logo-img{height: 40px; width: 40px;}
-  .about-features{grid-template-columns:1fr; gap:16px;}
-  .founder-acc-grid{grid-template-columns:1fr}
-  .wedding-actions{flex-direction:column; width:100%;}
-  .wedding-actions .btn-primary, .wedding-actions .btn-ig-outline {width:100%; justify-content:center;}
-  .section-title{font-size:1.8rem;}
-  .stat-num{font-size:1.5rem;}
   .mobile-menu{top:60px; padding:20px 16px;}
+  .nav-cta{font-size:0.75rem; padding:8px 16px; margin-left:4px;}
+  .logo-img{height:38px; width:38px;}
+  .nav-logo{font-size:1rem;}
 }
 /* ── BRANCH INLINE GALLERIES ── */
 .branch-inline-gallery {
