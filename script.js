@@ -78,20 +78,40 @@ if (heroStats) {
 // ── CONTACT FORM ──
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = this.querySelector('.form-submit');
-    const success = document.getElementById('formSuccess');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = 'Send Message ✦';
-      btn.disabled = false;
-      success.classList.add('show');
-      this.reset();
-      setTimeout(() => success.classList.remove('show'), 5000);
-    }, 1200);
-  });
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('.form-submit');
+      const success = document.getElementById('formSuccess');
+      
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const interest = document.getElementById('interest').value;
+      const msg = document.getElementById('msg').value;
+
+      const whatsappMsg = `Hello Step Up Dance Academy!%0A%0A*Student Enquiry/Admission*%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Interest:* ${interest}%0A*Message:* ${msg}`;
+      
+      const primaryNumber = "9555972389";
+      const secondaryNumber = "7982404565";
+      
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.textContent = 'Send Message ✦';
+        btn.disabled = false;
+        success.classList.add('show');
+        this.reset();
+        
+        // Open WhatsApp with message for primary number
+        window.open(`https://wa.me/91${primaryNumber}?text=${whatsappMsg}`, '_blank');
+        
+        // Alert user about second number or just confirm
+        setTimeout(() => {
+          success.classList.remove('show');
+          alert("Enquiry sent successfully! Details have been shared with our team.");
+        }, 5000);
+      }, 1200);
+    });
 }
 
 // ── SMOOTH ACTIVE NAV HIGHLIGHT ──
