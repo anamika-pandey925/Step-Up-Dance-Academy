@@ -517,6 +517,16 @@ input,select,textarea{font-family:var(--font-sans)}
 }
 
 
+.student-showcase-row {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scroll-snap-type: x mandatory;
+  align-items: start;
+  justify-content: center;
+}
+
 /* ── BRANCHES (REVERTED) ── */
 .branch-cards-wrapper{display:flex;flex-direction:column;gap:48px}
 .branch-glass-card{display:flex;background:var(--card-bg);border:1px solid var(--border);border-radius:24px;overflow:hidden;transition:var(--trans)}
@@ -638,8 +648,10 @@ input,select,textarea{font-family:var(--font-sans)}
   .footer-grid{grid-template-columns:1fr 1fr}
   .nav{padding:16px 24px}
   .nav-links{display:none}
+  .nav-cta{display:none}
   .burger{display:flex}
   .hours-divider{display:none}
+  .student-showcase-row{justify-content:flex-start;padding:0 20px}
   .branch-glass-card{flex-direction:column}
   .bgc-video{max-width:100%}
   .bgc-content{padding:32px 24px}
