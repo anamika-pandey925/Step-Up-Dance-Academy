@@ -1,0 +1,3 @@
+.netlify/
+deploy_temp/
+*.zip
