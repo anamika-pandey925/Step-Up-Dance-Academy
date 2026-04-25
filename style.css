@@ -153,7 +153,7 @@ input,select,textarea{font-family:var(--font-sans)}
 /* ── MOBILE MENU ── */
 .mobile-menu{
   display:none;flex-direction:column;gap:4px;
-  position:fixed;top:70px;left:0;right:0;z-index:99;
+  position:fixed;top:70px;left:0;right:0;z-index:101;
   background:rgba(9,9,15,0.98);backdrop-filter:blur(20px);
   padding:24px;border-bottom:1px solid var(--border);
 }
@@ -510,22 +510,13 @@ input,select,textarea{font-family:var(--font-sans)}
 .student-styles span:hover{background:var(--primary);color:#fff}
 @media(max-width:900px){
   .student-card{flex-direction:column;gap:32px;padding:28px 20px}
-  .student-info.order-first{order:unset}
+  .student-card .student-info{order:1}
+  .student-card .student-video{order:2}
   .student-video,.student-video .video-container{flex:unset;width:100%;max-width:320px;margin:0 auto}
   .student-bio{max-width:100%}
   .student-name{font-size:1.8rem}
 }
 
-
-.student-showcase-row {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding-bottom: 20px;
-  scroll-snap-type: x mandatory;
-  align-items: start;
-  justify-content: center;
-}
 
 /* ── BRANCHES (REVERTED) ── */
 .branch-cards-wrapper{display:flex;flex-direction:column;gap:48px}
@@ -648,10 +639,8 @@ input,select,textarea{font-family:var(--font-sans)}
   .footer-grid{grid-template-columns:1fr 1fr}
   .nav{padding:16px 24px}
   .nav-links{display:none}
-  .nav-cta{display:none}
   .burger{display:flex}
   .hours-divider{display:none}
-  .student-showcase-row{justify-content:flex-start;padding:0 20px}
   .branch-glass-card{flex-direction:column}
   .bgc-video{max-width:100%}
   .bgc-content{padding:32px 24px}
