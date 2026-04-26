@@ -662,9 +662,12 @@ input,select,textarea{font-family:var(--font-sans)}
   .classes-grid,.fac-grid,.pricing-grid,.reviews-grid,.ig-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .mobile-menu{top:60px; padding:20px 16px;}
-  .nav-cta{font-size:0.75rem; padding:8px 16px; margin-left:4px;}
+  .nav-cta{display:none !important;}
   .logo-img{height:38px; width:38px;}
   .nav-logo{font-size:1rem;}
+  .nav{padding:16px 16px !important;}
+  .nav.scrolled{padding:10px 16px !important;}
+  .academy-video{height: 450px !important; object-fit: cover !important;}
 }
 /* ── BRANCH INLINE GALLERIES ── */
 .branch-inline-gallery {
