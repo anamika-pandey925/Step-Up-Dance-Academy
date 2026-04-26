@@ -89,6 +89,7 @@ if (contactForm) {
       const msg = document.getElementById('msg').value;
 
       const whatsappMsg = `Hello Step Up Dance Academy!%0A%0A*Student Enquiry/Admission*%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Interest:* ${interest}%0A*Message:* ${msg}`;
+      const smsMsg = `Student Enquiry/Admission - Name: ${name}, Phone: ${phone}, Interest: ${interest}, Message: ${msg}`;
       
       const primaryNumber = "9555972389";
       const secondaryNumber = "7982404565";
@@ -102,13 +103,16 @@ if (contactForm) {
         success.classList.add('show');
         this.reset();
         
-        // Open WhatsApp with message for primary number
+        // Open WhatsApp with message for primary number in a new tab
         window.open(`https://wa.me/91${primaryNumber}?text=${whatsappMsg}`, '_blank');
+        
+        // Trigger SMS for primary number in the current tab
+        window.location.href = `sms:+91${primaryNumber}?body=${encodeURIComponent(smsMsg)}`;
         
         // Alert user about second number or just confirm
         setTimeout(() => {
           success.classList.remove('show');
-          alert("Enquiry sent successfully! Details have been shared with our team.");
+          alert("Enquiry sent successfully! Details have been shared via WhatsApp and SMS.");
         }, 5000);
       }, 1200);
     });
