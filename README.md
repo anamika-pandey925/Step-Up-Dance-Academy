@@ -53,5 +53,5 @@ The main goal of this project is to practice and demonstrate frontend developmen
 ## 🌐 Live Website
 👉 https://step-up-dance-academy-bceeua7gd-anamika-pandey925s-projects.vercel.app/
 
-📌 Short Professional Tagline
+## 📌 Short Professional Tagline
 "A modern, responsive dance academy website designed to showcase classes, styles, and an engaging user experience."
