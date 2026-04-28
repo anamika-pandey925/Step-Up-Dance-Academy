@@ -12,45 +12,45 @@ This project focuses on delivering a visually appealing layout combined with smo
 - **Designed with a focus on user experience and accessibility
 
 ##💡 Features
-###🎭 Dance Categories
-### Users can explore multiple dance styles such as:
-- **Hip-Hop
-- **Contemporary
-- **Ballet
-- **Freestyle
-- **Bally Dance
-- **Classical and all...
+🎭 Dance Categories
+ Users can explore multiple dance styles such as:
+- Hip-Hop
+- Contemporary
+- Ballet
+- Freestyle
+- Bally Dance
+- Classical and all...
 
-## 📅 Class & Schedule Section
-- **Organized display of available classes
-- **Easy-to-read structure for timings and batches
+ 📅 Class & Schedule Section
+- Organized display of available classes
+- Easy-to-read structure for timings and batches
 
-##🧾 Registration / Contact Section
-- **Simple interface for user interaction
-- **Helps users connect with the academy
+🧾 Registration / Contact Section
+- Simple interface for user interaction
+- Helps users connect with the academy
 
 ##🎨 UI/UX Design
-- **Smooth scrolling
-- **Well-structured sections
-- **Attractive visuals and layout
+- Smooth scrolling
+- Well-structured sections
+- Attractive visuals and layout
 
-##🛠️ Tech Stack
-- **HTML5 – Structure
-- **CSS3 – Styling & responsiveness
-- **JavaScript – Interactivity
+🛠️ Tech Stack
+- HTML5 – Structure
+- CSS3 – Styling & responsiveness
+- JavaScript – Interactivity
 
-##🚀 Future Improvements
-- **Convert into React.js application
-- **Add authentication (login/signup)
-- **Integrate backend (Node.js / Firebase)
-- **Online class booking system
-- **Payment integration
-- **Admin dashboard
+🚀 Future Improvements
+- Convert into React.js application
+- Add authentication (login/signup)
+- Integrate backend (Node.js / Firebase)
+- Online class booking system
+- Payment integration
+- Admin dashboard
 
-#🎯 Project Goal
+🎯 Project Goal
 The main goal of this project is to practice and demonstrate frontend development skills by building a real-world inspired website with a strong focus on design, responsiveness, and usability.
 
-#🌐 Live Website
+🌐 Live Website
 👉 https://step-up-dance-academy-bceeua7gd-anamika-pandey925s-projects.vercel.app/
 
 📌 Short Professional Tagline
