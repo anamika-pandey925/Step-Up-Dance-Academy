@@ -1,0 +1,6 @@
+[build]
+  publish = "."
+
+[site]
+  name = "step-up-dance-website"
+  id = "ef8db6e4-624d-4229-91c7-66521c8c23e8"
