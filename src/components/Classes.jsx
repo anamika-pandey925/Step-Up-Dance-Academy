@@ -31,11 +31,12 @@ const Classes = () => {
               </div>
               <h3>{cls.title}</h3>
               <p>{cls.desc}</p>
-              <div className="class-tags">
+              <div className="class-tags" style={{ marginBottom: '20px' }}>
                 {cls.levels.map((level, i) => (
                   <span key={i}>{level}</span>
                 ))}
               </div>
+              <a href="#contact" className="btn-outline" style={{ padding: '8px 20px', fontSize: '0.8rem', width: '100%', justifyContent: 'center' }}>Join Class Now</a>
             </div>
           ))}
         </div>

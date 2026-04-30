@@ -32,6 +32,16 @@ function App() {
     };
     window.addEventListener('mousemove', moveCursor);
 
+    // Hover effect for cursor
+    const handleHover = (e) => {
+      if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
+        document.body.classList.add('cursor-hover');
+      } else {
+        document.body.classList.remove('cursor-hover');
+      }
+    };
+    window.addEventListener('mouseover', handleHover);
+
     // Scroll Header Logic
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -57,6 +67,7 @@ function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', moveCursor);
+      window.removeEventListener('mouseover', handleHover);
       observer.disconnect();
     };
   }, []);

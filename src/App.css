@@ -4,17 +4,17 @@
 :root {
   --bg: #050505;
   --bg2: #0a0a0a;
-  --bg3: #111111;
-  --primary: #FF5500; /* Brightened Orange */
-  --primary-glow: rgba(255, 85, 0, 0.4);
-  --accent: #ff7733;
+  --bg3: #121212;
+  --primary: #FF4D00; /* More neon orange */
+  --primary-glow: rgba(255, 77, 0, 0.4);
+  --accent: #FF8C00;
   --text: #ffffff;
-  --muted: #b3b3b3;
-  --border: rgba(255, 255, 255, 0.15);
+  --muted: #a0a0a0;
+  --border: rgba(255, 255, 255, 0.1);
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Playfair Display', serif;
-  --r: 20px;
-  --trans: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  --r: 24px;
+  --trans: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ── BASE ── */
@@ -31,22 +31,21 @@ body {
 /* Custom Cursor */
 #custom-cursor {
   position: fixed;
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   background-color: var(--primary);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
   transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s;
-  mix-blend-mode: screen;
-  box-shadow: 0 0 10px var(--primary-glow);
+  transition: width 0.3s, height 0.3s, background-color 0.3s;
+  box-shadow: 0 0 20px var(--primary-glow);
 }
-a:hover ~ #custom-cursor, button:hover ~ #custom-cursor {
-  width: 25px;
-  height: 25px;
-  background-color: transparent;
-  border: 2px solid var(--primary);
+.cursor-hover #custom-cursor {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 77, 0, 0.1);
+  border: 1px solid var(--primary);
 }
 
 /* ── LAYOUT ── */
