@@ -1,5 +1,5 @@
 import React from 'react';
-import ptImg from '../assets/personal-training.jpeg';
+import ptPoster from '../assets/poster-personal.png';
 
 const PersonalTraining = () => {
   return (
@@ -7,43 +7,44 @@ const PersonalTraining = () => {
       <div className="container">
         <div className="section-header reveal" style={{ textAlign: 'center', marginBottom: '80px' }}>
           <span className="section-tag">One-on-One Excellence</span>
-          <h2 className="section-title">Personal <em>Training</em> Programs</h2>
+          <h2 className="title-serif" style={{ fontSize: '4rem' }}>Personal <em style={{ fontStyle: 'normal', color: 'var(--primary)' }}>Training</em></h2>
         </div>
 
-        <div className="about-grid">
-          <div className="about-visual reveal">
-            <div className="about-img-box">
-              <img src={ptImg} alt="Personal Training with Addy Sir" />
-            </div>
-            <div className="experience-badge" style={{ background: 'var(--neon-purple)' }}>
-              <span className="exp-val">₹5,000</span>
-              <span className="exp-txt">Limited Seats</span>
-            </div>
+        <div className="founder-main">
+          <div className="reveal">
+            <img src={ptPoster} alt="Personal Training Poster" style={{ width: '100%', borderRadius: '20px', border: '1px solid var(--border)', boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }} />
           </div>
 
-          <div className="about-text reveal">
-            <h3 style={{ fontSize: '2rem', marginBottom: '15px' }}>Weekend Batch (Sat & Sun)</h3>
-            <span style={{ color: 'var(--primary)', fontWeight: 'bold', display: 'block', marginBottom: '25px' }}>Trainer: ADDY SIR</span>
-            
-            <p className="about-para">Exclusive training at the Nangloi branch including:</p>
-            <div className="about-features" style={{ marginBottom: '40px' }}>
-              <div className="feat-item"><span>✦</span> Body movement training</div>
-              <div className="feat-item"><span>✦</span> Advanced Choreography</div>
-              <div className="feat-item"><span>✦</span> Solo video shoot</div>
-              <div className="feat-item"><span>✦</span> Music mixing</div>
-              <div className="feat-item"><span>✦</span> Confidence training</div>
-              <div className="feat-item"><span>✦</span> Reality show guidance</div>
-            </div>
+          <div className="founder-details reveal">
+            <div className="founder-bio-box">
+              <h3 style={{ fontSize: '2rem', marginBottom: '15px' }}>Weekend Batch (Sat & Sun)</h3>
+              <span style={{ color: 'var(--primary)', fontWeight: 'bold', display: 'block', marginBottom: '25px', textTransform: 'uppercase' }}>Trainer: ADDY SIR</span>
+              
+              <p style={{ color: 'var(--muted)', marginBottom: '30px' }}>
+                Exclusive training at the Nangloi branch designed for those who want to reach professional levels quickly.
+              </p>
 
-            <div style={{ background: 'var(--bg2)', padding: '30px', borderRadius: 'var(--r)', border: '1px solid var(--border)', marginBottom: '40px' }}>
-              <h4 style={{ color: 'var(--neon-pink)', marginBottom: '10px' }}>Premium Service</h4>
-              <p style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '10px' }}>Personal Choreographer: ₹10,000 <span style={{ fontSize: '0.9rem', color: 'var(--muted)' }}>/ per event</span></p>
-              <p style={{ color: 'var(--muted)', fontSize: '0.9rem' }}>Includes: Theme planning, advanced choreography, music mixing, and practice sessions.</p>
-            </div>
+              <div className="info-card orange-border" style={{ marginBottom: '40px' }}>
+                <h4>✦ What's Included</h4>
+                <ul style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+                  <li style={{ paddingLeft: '25px' }}>Body movement training</li>
+                  <li style={{ paddingLeft: '25px' }}>Solo video shoot</li>
+                  <li style={{ paddingLeft: '25px' }}>Music mixing</li>
+                  <li style={{ paddingLeft: '25px' }}>Confidence training</li>
+                  <li style={{ paddingLeft: '25px' }}>Choreography</li>
+                  <li style={{ paddingLeft: '25px' }}>Reality show guidance</li>
+                </ul>
+              </div>
 
-            <div style={{ display: 'flex', gap: '20px' }}>
-              <a href="tel:+919555972389" className="btn-primary">Register Now</a>
-              <a href="tel:+917982404565" className="btn-ghost">Enquire Now</a>
+              <div style={{ background: '#111', padding: '30px', borderRadius: '15px', border: '1px solid var(--border)', marginBottom: '40px' }}>
+                <p style={{ fontSize: '1.5rem', fontWeight: '800', color: '#fff', marginBottom: '10px' }}>Price: ₹5,000</p>
+                <p style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.9rem' }}>LIMITED SEATS AVAILABLE</p>
+              </div>
+
+              <div style={{ display: 'flex', gap: '20px' }}>
+                <a href="tel:+917982404565" className="btn-primary">Book Now</a>
+                <a href="tel:+919555972389" className="btn-outline">Enquire Now</a>
+              </div>
             </div>
           </div>
         </div>

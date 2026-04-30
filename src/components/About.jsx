@@ -1,43 +1,22 @@
 import React from 'react';
-import studioImg from '../assets/studio.png';
 
 const About = () => {
   return (
-    <section className="about section" id="about">
+    <section className="about section" id="about" style={{ textAlign: 'center' }}>
       <div className="container">
-        <div className="about-grid">
-          <div className="about-visual reveal">
-            <div className="about-img-box">
-              <img src={studioImg} alt="Step Up Dance Studio" />
-            </div>
-            <div className="experience-badge">
-              <span className="exp-val">10+</span>
-              <span className="exp-txt">Years Experience</span>
-            </div>
-          </div>
-
-          <div className="about-text reveal">
-            <span className="section-tag">Since 2015</span>
-            <h2 className="section-title">Best Dance Academy in <em>Nangloi</em> Delhi & <em>Bahadurgarh</em> Haryana</h2>
-            <p className="about-para" style={{ fontSize: '1.1rem', marginBottom: '24px' }}>
-              Step Up Dance Academy is an award-winning studio dedicated to the art of dance. We offer professional training from beginner to advanced levels, ensuring every student finds their rhythm.
-            </p>
-            <p className="about-para" style={{ color: 'var(--muted)', marginBottom: '32px' }}>
-              Our certified instructors provide a supportive environment for students of all ages. Whether you're preparing for a reality show or just want to have fun, we have a program for you.
-            </p>
-            
-            <div className="about-features">
-              <div className="feat-item"><span>✦</span> All levels welcome</div>
-              <div className="feat-item"><span>✦</span> Certified instructors</div>
-              <div className="feat-item"><span>✦</span> Children programs</div>
-              <div className="feat-item"><span>✦</span> Reality show prep</div>
-            </div>
-
-            <div style={{ marginTop: '48px', display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-              <a href="tel:+919555972389" className="btn-ghost">Call: 9555972389</a>
-              <a href="tel:+917982404565" className="btn-ghost">Call: 7982404565</a>
-            </div>
-          </div>
+        <div className="reveal" style={{ marginBottom: '40px' }}>
+          <span style={{ background: 'rgba(255,255,255,0.05)', padding: '5px 15px', borderRadius: '50px', fontSize: '0.75rem', fontWeight: '700', color: '#ff4500', textTransform: 'uppercase' }}>ABOUT US</span>
+        </div>
+        <h2 className="title-serif reveal" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', marginBottom: '40px' }}>
+          Best Dance Academy <br />in Nangloi New Delhi & Bahadurgarh Haryana.
+        </h2>
+        <div className="reveal" style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <p style={{ color: 'var(--muted)', fontSize: '1.1rem', marginBottom: '30px' }}>
+            We've been providing award-winning dance training for many years. At Step Up Dance Academy, our stylish, well-appointed studios host some of New Delhi's premier instructors — offering beginner, intermediate, and advanced dance instruction.
+          </p>
+          <p style={{ color: 'var(--muted)', fontSize: '1.1rem' }}>
+            We also offer taster sessions for those looking to experience new dance styles for the first time. Whatever your passion — celebrate it at our studio!
+          </p>
         </div>
       </div>
     </section>
