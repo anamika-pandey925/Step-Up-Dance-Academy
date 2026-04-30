@@ -13,6 +13,7 @@ import Videos from './components/Videos';
 import Booking from './components/Booking';
 import Contact from './components/Contact';
 import Floating from './components/Floating';
+import Marquee from './components/Marquee';
 
 function App() {
   useEffect(() => {
@@ -63,6 +64,7 @@ function App() {
       
       <main>
         <Hero />
+        <Marquee />
         <About />
         <Founder />
         <Branches />

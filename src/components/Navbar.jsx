@@ -15,6 +15,8 @@ const Navbar = () => {
     { name: 'Home', href: '#hero' },
     { name: 'About', href: '#about' },
     { name: 'Branches', href: '#branches' },
+    { name: 'Wedding', href: '#wedding' },
+    { name: 'TV Reality', href: '#tv-reality' },
     { name: 'Gallery', href: '#gallery' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -24,7 +26,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex justify-between items-center">
         <a href="#" className="flex items-center gap-3">
           <img src="/images/logo.jpg.jpeg" alt="Logo" className="w-12 h-12 rounded-full border-2 border-primary" />
-          <span className="text-xl font-black tracking-tighter text-white">STEP UP <span className="text-primary">DANCE</span></span>
+          <span className="text-xl font-bold tracking-tight text-white">Step Up <span className="text-primary">Dance Academy</span></span>
         </a>
 
         {/* Desktop Menu */}

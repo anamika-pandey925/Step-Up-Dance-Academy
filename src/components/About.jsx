@@ -12,11 +12,11 @@ const About = () => {
             viewport={{ once: true }}
             className="lg:w-1/2"
           >
-            <div className="inline-block px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
-              Our Journey
+            <div className="inline-block px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
+              ABOUT US
             </div>
-            <h2 className="title-serif text-5xl md:text-6xl mb-8 leading-tight">
-              Best Dance Academy in <span className="text-primary">Delhi</span> & <span className="text-primary">Haryana</span>
+            <h2 className="title-serif text-6xl md:text-7xl mb-8 leading-tight">
+              Best Dance Academy
             </h2>
             <div className="space-y-6 text-white/60 text-lg leading-relaxed mb-10">
               <p>

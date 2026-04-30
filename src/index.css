@@ -23,7 +23,7 @@
   }
   
   .title-serif {
-    @apply font-serif font-bold leading-[1.1];
+    @apply font-serif font-medium leading-[1.1] tracking-[-0.02em];
   }
 }
 
@@ -61,4 +61,15 @@
 }
 .swiper-button-next, .swiper-button-prev {
   @apply text-primary !important;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
 }

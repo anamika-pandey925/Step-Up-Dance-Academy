@@ -19,18 +19,18 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="inline-block px-6 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-black tracking-widest uppercase mb-10"
+            className="inline-block px-6 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-10"
           >
-            ✦ Premier Dance Academy in Delhi & Haryana
+            ✦ Premier Dance Academy, with branches in Nangloi, New Delhi and Bahadurgarh, Haryana
           </motion.span>
           
           <h1 className="title-serif text-6xl md:text-8xl lg:text-9xl mb-8">
             Move – Express – <br />
-            <span className="text-primary italic">Transform.</span>
+            <span className="text-primary italic font-serif">Transform.</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Award-winning dance training from Bollywood to Hip-Hop. Unleash your potential at Step Up Dance Academy.
+          <p className="text-lg md:text-xl text-white/60 mb-12 max-w-3xl mx-auto leading-relaxed font-sans">
+            Award-winning dance training for all ages & levels in Nangloi , New Delhi & Bahadurgarh Haryana. From Bollywood to All Dance Style — find your rhythm at STEP UP DANCE ACADEMY.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -49,21 +49,24 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="flex justify-center items-center gap-12 mt-20 text-white/40"
+            className="flex justify-center items-center gap-6 md:gap-12 mt-20 text-white/40"
           >
             <div className="text-center">
-              <span className="block text-3xl font-black text-white">18</span>
-              <span className="text-[10px] uppercase tracking-widest font-bold">Reviews</span>
+              <span className="block text-4xl md:text-5xl font-bold text-white mb-1">18</span>
+              <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Google Reviews</span>
             </div>
-            <div className="w-px h-10 bg-white/10"></div>
-            <div className="text-center">
-              <span className="block text-3xl font-black text-white">5+</span>
-              <span className="text-[10px] uppercase tracking-widest font-bold">Styles</span>
+            <div className="w-px h-12 bg-white/10 relative">
+              <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-[8px] tracking-[0.3em] text-white/20 uppercase font-bold">Scroll</div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-primary rounded-full blur-[2px]"></div>
             </div>
-            <div className="w-px h-10 bg-white/10"></div>
             <div className="text-center">
-              <span className="block text-3xl font-black text-white">10</span>
-              <span className="text-[10px] uppercase tracking-widest font-bold">Years</span>
+              <span className="block text-4xl md:text-5xl font-bold text-white mb-1">5</span>
+              <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Dance Styles</span>
+            </div>
+            <div className="w-px h-12 bg-white/10"></div>
+            <div className="text-center">
+              <span className="block text-4xl md:text-5xl font-bold text-white mb-1">10</span>
+              <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Years Training</span>
             </div>
           </motion.div>
         </motion.div>
