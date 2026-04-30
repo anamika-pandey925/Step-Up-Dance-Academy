@@ -21,7 +21,7 @@ export default {
         'neon': '0 0 20px rgba(255, 77, 0, 0.4)',
       },
       borderRadius: {
-        'premium': '24px',
+        'premium': '24px'
       }
     },
   },
