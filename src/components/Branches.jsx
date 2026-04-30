@@ -1,22 +1,32 @@
 import React from 'react';
-import nangloiPoster from '../assets/poster-nangloi.png';
-import bahadurgarhPoster from '../assets/poster-bahadurgarh.png';
 
 const Branches = () => {
   const branches = [
     {
       name: "Nangloi Delhi Branch",
       subtitle: "Join our step up dance academy at our premium studio in Nangloi Delhi",
-      address: "STEP UP DANCE ACADEMY HALL NO 5 SHIV MARKET BHOOTON WALI GALI NEAR BY SURYA PUBLIC SCHOOL NANGLOI DELHI 110041",
+      address: "STEP UP DANCE ACADEMY HALL NO 5 SHIV MARKET BHOOTON WALI GALI NEAR BY SURYA PUBLIC SCHOOL NANGLOI DELHI 110041 NEAREST NANGLOI METRO STATION",
       timing: "10:00 AM – 09:00 PM",
-      poster: nangloiPoster
+      videoSrc: "assets/academy-intro-nangloi-branch.mp4",
+      instagram: "https://www.instagram.com/step_up_dance_academy_?igsh=c3gyNHU3bWlzbWI4",
+      facebook: "https://www.facebook.com/stepupdanceacademy.official",
+      youtube: "https://youtube.com/@stepupdanceacademy1999?si=R9zU4OdZfDNlxUR0",
+      gallery: [
+        "Photos/Nangloi/front.jpeg", "Photos/Nangloi/Entry.jpeg", "Photos/Nangloi/Entry1.jpeg", "Photos/Nangloi/Award.jpeg"
+      ]
     },
     {
       name: "Bahadurgarh Haryana Branch",
       subtitle: "Join our step up dance academy at our premium studio in Bahadurgarh Haryana",
-      address: "OPPOSITE ELENTA MART, DHARAM VIHAR, NEAR BAHADURGARH METRO STATION",
+      address: "STEP UP DANCE ACADEMY BAHADURGARH BRANCH OPPOSITE ELENTA MART DHARAM VIHAR NALA ROAD AGARWAL COLONY, NEAREST METRO STATION BAHADURGARH CITY.",
       timing: "10:00 AM – 09:00 PM",
-      poster: bahadurgarhPoster
+      videoSrc: "assets/academy-intro-bahadurgarh-branch.mp4",
+      instagram: "https://www.instagram.com/stepupdanceacademy_hr/",
+      facebook: "https://www.facebook.com/stepupdanceacademy.official",
+      youtube: "https://youtube.com/@stepupdanceacademy1999?si=R9zU4OdZfDNlxUR0",
+      gallery: [
+        "Photos/Bahadurgarh/Front.jpeg", "Photos/Bahadurgarh/Front2.jpeg", "Photos/Bahadurgarh/Award sections.jpeg", "Photos/Bahadurgarh/3.jpeg"
+      ]
     }
   ];
 
@@ -24,14 +34,21 @@ const Branches = () => {
     <section className="branches section" id="branches">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '60px' }} className="reveal">
-          <span style={{ background: 'rgba(255,255,255,0.05)', padding: '5px 15px', borderRadius: '50px', fontSize: '0.7rem', fontWeight: '700', color: '#ff4500', textTransform: 'uppercase' }}>FIND US</span>
+          <span style={{ background: 'rgba(255,255,255,0.05)', padding: '5px 15px', borderRadius: '50px', fontSize: '0.7rem', fontWeight: '700', color: 'var(--primary)', textTransform: 'uppercase' }}>FIND US</span>
           <h2 className="title-serif" style={{ fontSize: '4.5rem', marginTop: '10px' }}>Our <em style={{ fontStyle: 'normal', color: 'var(--primary)' }}>Branches</em></h2>
         </div>
 
         {branches.map((branch, index) => (
           <div key={index} className="branch-card-modern reveal">
-            <div className="branch-img-modern">
-              <img src={branch.poster} alt={branch.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <div className="branch-img-modern" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <video 
+                src={branch.videoSrc} 
+                controls 
+                loop 
+                muted
+                playsInline
+                style={{ width: '100%', height: '100%', objectFit: 'contain' }} 
+              />
             </div>
             <div className="branch-info-modern">
               <h3 className="title-serif">{branch.name}</h3>
@@ -41,16 +58,13 @@ const Branches = () => {
               <p style={{ fontSize: '0.9rem', marginBottom: '20px' }}>{branch.address}</p>
               
               <strong>TIMING:</strong>
-              <p style={{ fontSize: '1.1rem', color: '#ff4500', fontWeight: '700' }}>{branch.timing}</p>
+              <p style={{ fontSize: '1.1rem', color: 'var(--primary)', fontWeight: '700' }}>{branch.timing}</p>
               
-              <div style={{ marginTop: '40px' }}>
-                <span style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.8rem', letterSpacing: '1px' }}>BRANCH GALLERY & AWARDS +</span>
-                {/* Placeholder for images as per prompt requirement to include ALL provided images */}
-                <div style={{ display: 'flex', gap: '10px', marginTop: '15px', overflowX: 'auto', paddingBottom: '10px' }}>
-                  {[1,2,3,4].map(i => (
-                    <div key={i} style={{ flex: '0 0 100px', height: '100px', background: '#222', borderRadius: '10px', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#444' }}>IMG</div>
-                  ))}
-                </div>
+              <div style={{ marginTop: '40px', display: 'flex', gap: '15px' }}>
+                <a href="#contact" className="btn-primary" style={{ padding: '10px 24px' }}>Join Now</a>
+                <a href={branch.instagram} target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ padding: '10px' }}>IG</a>
+                <a href={branch.facebook} target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ padding: '10px' }}>FB</a>
+                <a href={branch.youtube} target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ padding: '10px' }}>YT</a>
               </div>
             </div>
           </div>

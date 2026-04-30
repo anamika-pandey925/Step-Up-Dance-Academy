@@ -13,6 +13,7 @@ import Wedding from './components/Wedding';
 import VideoReviews from './components/VideoReviews';
 import PersonalTraining from './components/PersonalTraining';
 import TVReality from './components/TVReality';
+import Zumba from './components/Zumba';
 import Contact from './components/Contact';
 import Showcase from './components/Showcase';
 import Footer from './components/Footer';
@@ -21,6 +22,17 @@ function App() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    // Custom Cursor Logic
+    const cursor = document.getElementById('custom-cursor');
+    const moveCursor = (e) => {
+      if (cursor) {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      }
+    };
+    window.addEventListener('mousemove', moveCursor);
+
+    // Scroll Header Logic
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
@@ -44,12 +56,14 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', moveCursor);
       observer.disconnect();
     };
   }, []);
 
   return (
     <div className="App">
+      <div id="custom-cursor"></div>
       <div className="flowing-bg"></div>
       
       <Navbar scrolled={scrolled} />
@@ -61,6 +75,7 @@ function App() {
         <Founder />
         <Branches />
         <Classes />
+        <Zumba />
         <Wedding />
         <VideoReviews />
         <PersonalTraining />
