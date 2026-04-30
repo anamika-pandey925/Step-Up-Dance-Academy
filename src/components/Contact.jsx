@@ -1,91 +1,65 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   return (
-    <section className="contact section" id="contact" style={{ background: 'var(--bg2)' }}>
-      <div className="container">
-        <div className="section-header reveal" style={{ textAlign: 'center', marginBottom: '80px' }}>
-          <span className="section-tag">Get in Touch</span>
-          <h2 className="section-title">Join the <em>Legacy</em></h2>
-        </div>
-
-        <div className="about-grid">
-          <div className="contact-info reveal">
-            <h3 style={{ fontSize: '2rem', marginBottom: '20px' }}>Ready to Move?</h3>
-            <p style={{ color: 'var(--muted)', marginBottom: '40px' }}>
-              Whether you're looking for a professional career or just want to explore your passion, we are here to guide you. Book your trial session today!
+    <footer id="contact" className="py-20 bg-bg2 border-t border-white/5">
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+          <div className="lg:col-span-2">
+            <a href="#" className="flex items-center gap-3 mb-8">
+              <img src="/images/logo.jpg.jpeg" alt="Logo" className="w-12 h-12 rounded-full border-2 border-primary" />
+              <span className="text-2xl font-black tracking-tighter">STEP UP <span className="text-primary">DANCE</span></span>
+            </a>
+            <p className="text-white/40 max-w-sm leading-relaxed">
+              Leading the way in professional dance training across Delhi and Haryana. Empowering the next generation of performers.
             </p>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '30px', marginBottom: '40px' }}>
-              <div style={{ display: 'flex', gap: '20px' }}>
-                <span style={{ fontSize: '1.5rem', color: 'var(--primary)' }}>📍</span>
-                <div>
-                  <strong>Nangloi Branch</strong>
-                  <p style={{ color: 'var(--muted)', fontSize: '0.9rem' }}>Hall No 5 Shiv Market, Nangloi Delhi 110041</p>
-                </div>
-              </div>
-              <div style={{ display: 'flex', gap: '20px' }}>
-                <span style={{ fontSize: '1.5rem', color: 'var(--primary)' }}>📍</span>
-                <div>
-                  <strong>Bahadurgarh Branch</strong>
-                  <p style={{ color: 'var(--muted)', fontSize: '0.9rem' }}>Near Bahadurgarh Metro Station, Haryana</p>
-                </div>
-              </div>
-              <div style={{ display: 'flex', gap: '20px' }}>
-                <span style={{ fontSize: '1.5rem', color: 'var(--primary)' }}>📞</span>
-                <div>
-                  <strong>Call Us</strong>
-                  <p style={{ color: 'var(--muted)', fontSize: '0.9rem' }}>9555972389, 7982404565</p>
-                </div>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', gap: '15px' }}>
-              <a href="https://www.instagram.com/addy_hip_hoper_official/" target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ padding: '10px 20px', fontSize: '0.8rem' }}>Instagram</a>
-              <a href="https://www.facebook.com/stepupdanceacademy.official" target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ padding: '10px 20px', fontSize: '0.8rem' }}>Facebook</a>
-              <a href="https://youtube.com/@stepupdanceacademy1999?si=R9zU4OdZfDNlxUR0" target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ padding: '10px 20px', fontSize: '0.8rem' }}>YouTube</a>
-            </div>
-
-            {/* Championship Info */}
-            <div style={{ marginTop: '40px', padding: '30px', background: 'rgba(255, 85, 0, 0.05)', borderRadius: 'var(--r)', border: '1px solid var(--primary)' }}>
-              <h4 style={{ color: 'var(--primary)', marginBottom: '15px', textTransform: 'uppercase' }}>Upcoming Championship</h4>
-              <p style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>Date: 31st May</p>
-              <ul style={{ listStyle: 'none', marginTop: '15px', color: 'var(--muted)', fontSize: '0.85rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <li>• No participation fee</li>
-                <li>• Solo performance only</li>
-                <li>• 3+ dance styles required</li>
-                <li>• Cash Prizes & Trophies</li>
-              </ul>
-            </div>
+          </div>
+          
+          <div>
+            <h4 className="font-black uppercase tracking-widest text-xs text-primary mb-8">Direct Contact</h4>
+            <ul className="space-y-4">
+              <li>
+                 <a href="tel:9555972389" className="text-white/60 hover:text-white transition-colors flex items-center gap-3">
+                   <span className="text-primary">📞</span> 0955597 2389
+                 </a>
+              </li>
+              <li>
+                 <a href="tel:7982404565" className="text-white/60 hover:text-white transition-colors flex items-center gap-3">
+                   <span className="text-primary">📞</span> 079824 04565
+                 </a>
+              </li>
+              <li>
+                 <a href="mailto:info@stepupdance.com" className="text-white/60 hover:text-white transition-colors flex items-center gap-3">
+                   <span className="text-primary">✉️</span> Contact Academy
+                 </a>
+              </li>
+            </ul>
           </div>
 
-          <div className="contact-form reveal">
-            <form style={{ display: 'flex', flexDirection: 'column', gap: '20px', background: 'var(--bg3)', padding: '40px', borderRadius: 'var(--r)', border: '1px solid var(--border)' }}>
-              <div style={{ display: 'flex', gap: '20px' }}>
-                <input type="text" placeholder="Your Name" style={{ flex: 1, padding: '15px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '8px', color: '#fff' }} />
-                <input type="tel" placeholder="Phone Number" style={{ flex: 1, padding: '15px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '8px', color: '#fff' }} />
-              </div>
-              <select style={{ padding: '15px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '8px', color: '#fff' }}>
-                <option value="">Select Branch</option>
-                <option value="nangloi">Nangloi</option>
-                <option value="bahadurgarh">Bahadurgarh</option>
-              </select>
-              <select style={{ padding: '15px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '8px', color: '#fff' }}>
-                <option value="">Interested Style</option>
-                <option value="bollywood">Bollywood</option>
-                <option value="hiphop">Hip-Hop</option>
-                <option value="classical">Classical</option>
-                <option value="wedding">Wedding Choreography</option>
-                <option value="pt">Personal Training</option>
-                <option value="zumba">Zumba / Fitness</option>
-              </select>
-              <textarea placeholder="Message" rows="4" style={{ padding: '15px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '8px', color: '#fff', resize: 'none' }}></textarea>
-              <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Send Message</button>
-            </form>
+          <div>
+            <h4 className="font-black uppercase tracking-widest text-xs text-primary mb-8">Social Connect</h4>
+            <div className="flex gap-4">
+              {['IG', 'FB', 'YT'].map((platform) => (
+                <a key={platform} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-[10px] font-black hover:bg-primary hover:border-primary transition-all">
+                  {platform}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-white/5 gap-6">
+          <p className="text-white/20 text-[10px] font-bold uppercase tracking-widest">
+            © {new Date().getFullYear()} Step Up Dance Academy. All rights reserved.
+          </p>
+          <div className="flex gap-8 text-[10px] font-bold uppercase tracking-widest text-white/20">
+            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
-    </section>
+    </footer>
   );
 };
 

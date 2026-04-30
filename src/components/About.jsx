@@ -1,60 +1,65 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
-function About() {
+const About = () => {
   return (
-    <section className="about section" id="about">
-      <div className="container">
-        <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
-          <div className="about-text reveal" style={{ textAlign: 'left' }}>
-            <div style={{ marginBottom: '20px' }}>
-              <span style={{ background: 'rgba(255,255,255,0.05)', padding: '5px 15px', borderRadius: '50px', fontSize: '0.75rem', fontWeight: '700', color: 'var(--primary)', textTransform: 'uppercase' }}>
-                ABOUT OUR ACADEMY
-              </span>
+    <section id="about" className="py-32 relative overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col lg:flex-row items-center gap-16">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:w-1/2"
+          >
+            <div className="inline-block px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
+              Our Journey
             </div>
-            <h2 className="title-serif" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', marginBottom: '30px', lineHeight: '1.2' }}>
-              Best Dance Academy <br />
-              in <span style={{ color: 'var(--primary)' }}>Nangloi</span> New Delhi & <span style={{ color: 'var(--primary)' }}>Bahadurgarh</span> Haryana.
+            <h2 className="title-serif text-5xl md:text-6xl mb-8 leading-tight">
+              Best Dance Academy in <span className="text-primary">Delhi</span> & <span className="text-primary">Haryana</span>
             </h2>
-            <p style={{ color: 'var(--muted)', fontSize: '1.1rem', marginBottom: '20px' }}>
-              Step Up Dance Academy has been providing award-winning dance training for many years. Our stylish, well-appointed studios host some of New Delhi’s premier instructors — offering beginner, intermediate, and advanced dance instruction.
-            </p>
-            <p style={{ color: 'var(--muted)', fontSize: '1.1rem', marginBottom: '30px' }}>
-              We also offer taster sessions for those looking to experience new dance styles for the first time. Whatever your passion — celebrate it at our studio!
-            </p>
+            <div className="space-y-6 text-white/60 text-lg leading-relaxed mb-10">
+              <p>
+                Step Up Dance Academy has been providing award-winning dance training for many years. Our stylish, well-appointed studios host some of New Delhi’s premier instructors — offering beginner, intermediate, and advanced dance instruction.
+              </p>
+              <p>
+                We also offer taster sessions for those looking to experience new dance styles for the first time. Whatever your passion — celebrate it at our studio!
+              </p>
+            </div>
             
-            <div className="about-features" style={{ gridTemplateColumns: '1fr', gap: '15px', marginBottom: '40px' }}>
-               <div className="af-item"><span className="af-icon">✦</span> 10+ Years of Excellence</div>
-               <div className="af-item"><span className="af-icon">✦</span> Certified Professional Instructors</div>
-               <div className="af-item"><span className="af-icon">✦</span> Specialized Reality Show Training</div>
-               <div className="af-item"><span className="af-icon">✦</span> Branches in Delhi & Haryana</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {[
+                "All experience levels welcome",
+                "Certified & expert instructors",
+                "Children's graded programs",
+                "TV Reality Show preparation"
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-4 group">
+                  <span className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">✦</span>
+                  <span className="text-sm font-medium text-white/80">{item}</span>
+                </div>
+              ))}
             </div>
+          </motion.div>
 
-            <div className="about-contact-strip" style={{ justifyContent: 'flex-start' }}>
-              <a href="tel:+919555972389" className="contact-pill">
-                <span>📞</span> 9555972389
-              </a>
-              <a href="tel:+917982404565" className="contact-pill">
-                <span>📞</span> 7982404565
-              </a>
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:w-1/2 relative"
+          >
+            <div className="relative z-10 rounded-premium overflow-hidden border border-white/10 shadow-2xl">
+              <img src="/images/Front.jpeg" alt="Academy Front" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent opacity-60"></div>
             </div>
-          </div>
-
-          <div className="about-visual reveal">
-            <div style={{ position: 'relative', borderRadius: '30px', overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 30px 60px rgba(0,0,0,0.5)' }}>
-              <img 
-                src="/Photos/Front.jpeg" 
-                alt="Step Up Dance Academy Front" 
-                style={{ width: '100%', display: 'block', height: 'auto' }} 
-              />
-              <div style={{ position: 'absolute', bottom: '20px', left: '20px', background: 'var(--primary)', color: '#fff', padding: '10px 20px', borderRadius: '10px', fontWeight: '800', fontSize: '0.8rem' }}>
-                SINCE 1999
-              </div>
-            </div>
-          </div>
+            {/* Decor */}
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-[80px]"></div>
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-accent/20 rounded-full blur-[80px]"></div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default About;
