@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../assets/Photos/logo.jpg.jpeg';
 
 const Footer = () => {
   return (
@@ -8,7 +7,7 @@ const Footer = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '60px', marginBottom: '60px' }}>
           <div className="footer-brand">
             <a href="#" className="nav-logo" style={{ marginBottom: '25px' }}>
-              <img src={logo} alt="Step Up Logo" className="logo-img" />
+              <img src="/logo.jpg.jpeg" alt="Step Up Logo" className="logo-img" />
               <span>STEP UP</span>
             </a>
             <p style={{ color: 'var(--muted)', fontSize: '0.95rem' }}>
@@ -30,9 +29,9 @@ const Footer = () => {
           <div>
             <h4 style={{ color: '#fff', marginBottom: '25px', textTransform: 'uppercase', letterSpacing: '1px' }}>Connect</h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <li><a href="#" style={{ color: 'var(--muted)', transition: '0.3s' }}>Instagram (90K+)</a></li>
-              <li><a href="#" style={{ color: 'var(--muted)', transition: '0.3s' }}>Facebook</a></li>
-              <li><a href="#" style={{ color: 'var(--muted)', transition: '0.3s' }}>YouTube</a></li>
+              <li><a href="https://www.instagram.com/addy_hip_hoper_official/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', transition: '0.3s' }}>Instagram (90K+)</a></li>
+              <li><a href="https://www.facebook.com/stepupdanceacademy.official" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', transition: '0.3s' }}>Facebook</a></li>
+              <li><a href="https://youtube.com/@stepupdanceacademy1999?si=R9zU4OdZfDNlxUR0" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', transition: '0.3s' }}>YouTube</a></li>
             </ul>
           </div>
 

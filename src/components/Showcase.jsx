@@ -1,19 +1,15 @@
 import React from 'react';
-import manishVid from '../assets/Manish.mp4';
-import anushkaVid from '../assets/Anuskha.mp4';
-import navyaVid from '../assets/Navya.mp4';
-import mahiVid from '../assets/Mahi.mp4';
 
 const Showcase = () => {
   const students = [
-    { name: "Manish", video: manishVid },
-    { name: "Anushka", video: anushkaVid },
-    { name: "Navya", video: navyaVid },
-    { name: "Mahi", video: mahiVid }
+    { name: "Manish", video: "/assets/Manish.mp4" },
+    { name: "Anushka", video: "/assets/Anuskha.mp4" },
+    { name: "Navya", video: "/assets/Navya.mp4" },
+    { name: "Mahi", video: "/assets/Mahi.mp4" }
   ];
 
   return (
-    <section className="showcase section" id="showcase">
+    <section className="showcase section" id="gallery">
       <div className="container">
         <div className="section-header reveal" style={{ textAlign: 'center', marginBottom: '80px' }}>
           <span className="section-tag">Student Spotlight</span>

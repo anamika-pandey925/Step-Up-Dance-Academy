@@ -237,13 +237,57 @@ a:hover ~ #custom-cursor, button:hover ~ #custom-cursor {
 .ticker-track span.dot { color: #ff4500; font-size: 0.7rem; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* ── BRANCHES ── */
-.branch-card-modern { background: #111; border-radius: 20px; overflow: hidden; margin-bottom: 40px; display: grid; grid-template-columns: 450px 1fr; border: 1px solid var(--border); }
-.branch-img-modern { background: #000; height: 100%; position: relative; }
-.branch-info-modern { padding: 50px; }
-.branch-info-modern h3 { font-size: 2.2rem; margin-bottom: 10px; }
-.branch-info-modern p { margin-bottom: 20px; color: var(--muted); }
-.branch-info-modern strong { color: var(--primary); display: block; margin-bottom: 5px; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+/* ── TV REALITY & CELEBRITY GRID ── */
+.celebrity-grid {
+  margin-top: 50px;
+}
+.celeb-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary) !important;
+  box-shadow: 0 20px 40px rgba(255, 85, 0, 0.15) !important;
+}
+.celeb-link:hover {
+  color: var(--primary) !important;
+}
+
+.phase-card {
+  transition: var(--trans);
+}
+.phase-card:hover {
+  transform: translateY(-5px);
+}
+
+.student-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.student-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── FOUNDER PREMIUM ── */
+.founder-card-premium {
+  position: sticky;
+  top: 120px;
+}
+.achievement-card {
+  transition: var(--trans);
+}
+.achievement-card:hover {
+  border-color: var(--primary) !important;
+  transform: scale(1.02);
+}
+
+/* ── ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
@@ -252,4 +296,13 @@ a:hover ~ #custom-cursor, button:hover ~ #custom-cursor {
   .about-features { grid-template-columns: 1fr; }
   .hero-stats { flex-direction: column; gap: 20px; }
   .stat-divider { display: none; }
+  .founder-grid { grid-template-columns: 1fr; }
+  .founder-card-premium { position: static; }
+}
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 3.5rem; }
+  .section { padding: 60px 0; }
+  .nav { padding: 15px 20px; }
+  .nav-links { display: none; } /* Mobile menu needed but keeping simple for now as per HTML */
 }

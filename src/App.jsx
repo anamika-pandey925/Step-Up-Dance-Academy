@@ -45,7 +45,7 @@ function App() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add('active');
         }
       });
     }, observerOptions);
@@ -77,9 +77,9 @@ function App() {
         <Classes />
         <Zumba />
         <Wedding />
-        <VideoReviews />
-        <PersonalTraining />
         <TVReality />
+        <PersonalTraining />
+        <VideoReviews />
         <Showcase />
         <Contact />
       </main>

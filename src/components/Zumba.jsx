@@ -22,7 +22,7 @@ function Zumba() {
               }}
             >
               <img
-                src="Photos/Zumba.png"
+                src="/Photos/Zumba.png"
                 alt="Aerobic and Zumba Classes"
                 style={{
                   borderRadius: '16px',

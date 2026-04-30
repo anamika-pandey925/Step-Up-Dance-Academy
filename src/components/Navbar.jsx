@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from '../assets/Photos/logo.jpg.jpeg';
 
 const Navbar = ({ scrolled }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +9,7 @@ const Navbar = ({ scrolled }) => {
     <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
         <a href="#" className="nav-logo">
-          <img src={logo} alt="Step Up Logo" className="logo-img" />
+          <img src="/logo.jpg.jpeg" alt="Step Up Logo" className="logo-img" />
           <span>Step Up <span style={{ color: 'var(--primary)' }}>Dance Academy</span></span>
         </a>
 
