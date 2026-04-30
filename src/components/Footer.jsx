@@ -3,50 +3,49 @@ import logo from '../assets/Photos/logo.jpg.jpeg';
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer section" style={{ background: '#000', padding: '80px 0 40px', borderTop: '1px solid var(--border)' }}>
       <div className="container">
-        <div className="footer-grid">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '60px', marginBottom: '60px' }}>
           <div className="footer-brand">
-            <a href="#" className="nav-logo footer-logo">
-              <img src={logo} alt="Step Up Dance Academy Logo" className="logo-img" />
-              <span>Step Up <em>Dance Academy</em></span>
+            <a href="#" className="nav-logo" style={{ marginBottom: '25px' }}>
+              <img src={logo} alt="Step Up Logo" className="logo-img" />
+              <span>STEP UP</span>
             </a>
-            <p>Empowering dancers through professional training, artistic expression, and a passion for movement. Join our community today.</p>
-            <div className="footer-social">
-              <a href="https://www.facebook.com/stepupdanceacademy.official" className="social-icon fb" aria-label="Facebook">FB</a>
-              <a href="https://www.instagram.com/step_up_dance_academy_" className="social-icon ig" aria-label="Instagram">IG</a>
-              <a href="https://youtube.com/@stepupdanceacademy1999" className="social-icon yt" aria-label="YouTube">YT</a>
-            </div>
+            <p style={{ color: 'var(--muted)', fontSize: '0.95rem' }}>
+              Move – Express – Transform. The premier dance academy in Delhi and Haryana, dedicated to professional dance training and performance excellence.
+            </p>
           </div>
-          <div className="footer-col">
-            <h5>Navigation</h5>
-            <a href="#hero">Home</a>
-            <a href="#about">About</a>
-            <a href="#branches">Branches</a>
-            <a href="#wedding">Wedding</a>
-            <a href="#contact">Contact</a>
+
+          <div>
+            <h4 style={{ color: '#fff', marginBottom: '25px', textTransform: 'uppercase', letterSpacing: '1px' }}>Quick Links</h4>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <li><a href="#about" style={{ color: 'var(--muted)', transition: '0.3s' }}>About Us</a></li>
+              <li><a href="#classes" style={{ color: 'var(--muted)', transition: '0.3s' }}>Dance Styles</a></li>
+              <li><a href="#branches" style={{ color: 'var(--muted)', transition: '0.3s' }}>Our Branches</a></li>
+              <li><a href="#wedding" style={{ color: 'var(--muted)', transition: '0.3s' }}>Wedding Choreography</a></li>
+              <li><a href="#contact" style={{ color: 'var(--muted)', transition: '0.3s' }}>Book Trial</a></li>
+            </ul>
           </div>
-          <div className="footer-col">
-            <h5>Dance Styles</h5>
-            <a href="#classes">Bollywood</a>
-            <a href="#classes">Hip-Hop</a>
-            <a href="#classes">Classical</a>
-            <a href="#classes">Contemporary</a>
-            <a href="#classes">Ballet & Jazz</a>
-            <a href="#classes">Kids Program</a>
+
+          <div>
+            <h4 style={{ color: '#fff', marginBottom: '25px', textTransform: 'uppercase', letterSpacing: '1px' }}>Connect</h4>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <li><a href="#" style={{ color: 'var(--muted)', transition: '0.3s' }}>Instagram (90K+)</a></li>
+              <li><a href="#" style={{ color: 'var(--muted)', transition: '0.3s' }}>Facebook</a></li>
+              <li><a href="#" style={{ color: 'var(--muted)', transition: '0.3s' }}>YouTube</a></li>
+            </ul>
           </div>
-          <div className="footer-col">
-            <h5>Contact</h5>
-            <a href="tel:+919555972389">📞 09555972389</a>
-            <a href="tel:+917982404565">📞 07982404565</a>
-            <span>📍 Nangloi, New Delhi</span>
-            <span>📍 Bahadurgarh, Haryana</span>
-            <span>⏰ 10 AM – 9 PM (Mon–Sat)</span>
+
+          <div>
+            <h4 style={{ color: '#fff', marginBottom: '25px', textTransform: 'uppercase', letterSpacing: '1px' }}>Contact</h4>
+            <p style={{ color: 'var(--muted)', marginBottom: '10px' }}>📞 9555972389, 7982404565</p>
+            <p style={{ color: 'var(--muted)' }}>📍 Nangloi, New Delhi</p>
+            <p style={{ color: 'var(--muted)' }}>📍 Bahadurgarh, Haryana</p>
           </div>
         </div>
-        <div className="footer-bottom">
-          <span>© 2025 Step Up Dance Academy. All rights reserved.</span>
-          <span>Designed with ♥ for dancers</span>
+
+        <div style={{ paddingTop: '40px', borderTop: '1px solid var(--border)', textAlign: 'center', color: 'var(--muted)', fontSize: '0.85rem' }}>
+          <p>© {new Date().getFullYear()} STEP UP DANCE ACADEMY. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

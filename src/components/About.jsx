@@ -1,4 +1,5 @@
 import React from 'react';
+import studioImg from '../assets/studio.png';
 
 const About = () => {
   return (
@@ -6,37 +7,35 @@ const About = () => {
       <div className="container">
         <div className="about-grid">
           <div className="about-visual reveal">
-            <div className="about-card main-card">
-              <div className="about-img-placeholder">
-                <div className="dance-icon">💃</div>
-                <p>Award-Winning Studio</p>
-              </div>
+            <div className="about-img-box">
+              <img src={studioImg} alt="Step Up Dance Studio" />
             </div>
-            <div className="about-card side-card">
-              <div className="about-img-placeholder sm">
-                <div className="dance-icon">🏆</div>
-                <p>Best in Nangloi</p>
-              </div>
-            </div>
-            <div className="exp-badge">
-              <span className="exp-num">10+</span>
-              <span>Years of Excellence</span>
+            <div className="experience-badge">
+              <span className="exp-val">10+</span>
+              <span className="exp-txt">Years Experience</span>
             </div>
           </div>
+
           <div className="about-text reveal">
-            <span className="section-tag">About Us</span>
-            <h2 className="section-title">Best Dance Academy<br />in <em>Nangloi </em>New Delhi & <em>Bahadurgarh</em> Haryana.</h2>
-            <p className="about-para">We've been providing award-winning dance training for many years. At Step Up Dance Academy, our stylish, well-appointed studios host some of New Delhi's premier instructors — offering beginner, intermediate, and advanced dance instruction.</p>
-            <p className="about-para">We also offer taster sessions for those looking to experience new dance styles for the first time. Whatever your passion — celebrate it at our studio!</p>
+            <span className="section-tag">Since 2015</span>
+            <h2 className="section-title">Best Dance Academy in <em>Nangloi</em> Delhi & <em>Bahadurgarh</em> Haryana</h2>
+            <p className="about-para" style={{ fontSize: '1.1rem', marginBottom: '24px' }}>
+              Step Up Dance Academy is an award-winning studio dedicated to the art of dance. We offer professional training from beginner to advanced levels, ensuring every student finds their rhythm.
+            </p>
+            <p className="about-para" style={{ color: 'var(--muted)', marginBottom: '32px' }}>
+              Our certified instructors provide a supportive environment for students of all ages. Whether you're preparing for a reality show or just want to have fun, we have a program for you.
+            </p>
+            
             <div className="about-features">
-              <div className="af-item"><span className="af-icon">✦</span> All experience levels welcome</div>
-              <div className="af-item"><span className="af-icon">✦</span> Certified & expert instructors</div>
-              <div className="af-item"><span className="af-icon">✦</span> Children's graded programs</div>
-              <div className="af-item"><span className="af-icon">✦</span> TV Reality Show preparation</div>
+              <div className="feat-item"><span>✦</span> All levels welcome</div>
+              <div className="feat-item"><span>✦</span> Certified instructors</div>
+              <div className="feat-item"><span>✦</span> Children programs</div>
+              <div className="feat-item"><span>✦</span> Reality show prep</div>
             </div>
-            <div className="about-contact-strip">
-              <a href="tel:+919555972389" className="contact-pill">📞 09555972389</a>
-              <a href="tel:+917982404565" className="contact-pill">📞 079824 04565</a>
+
+            <div style={{ marginTop: '48px', display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+              <a href="tel:+919555972389" className="btn-ghost">Call: 9555972389</a>
+              <a href="tel:+917982404565" className="btn-ghost">Call: 7982404565</a>
             </div>
           </div>
         </div>

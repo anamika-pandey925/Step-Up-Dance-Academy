@@ -1,59 +1,76 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import logo from '../assets/Photos/logo.jpg.jpeg';
 
-const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
+const Navbar = ({ scrolled }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const toggleMenu = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
 
   return (
-    <>
-      <nav className={`nav ${scrolled ? 'scrolled' : ''}`} id="nav">
+    <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
+      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
         <a href="#" className="nav-logo">
-          <img src={logo} alt="Step Up Dance Academy Logo" className="logo-img" />
-          <span>Step Up <em>Dance Academy</em></span>
+          <img src={logo} alt="Step Up Logo" className="logo-img" />
+          <span>STEP UP <em>DANCE</em></span>
         </a>
-        <ul className="nav-links">
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#branches">Branches</a></li>
-          <li><a href="#wedding">Wedding</a></li>
-          <li><a href="#tv-reality">TV Reality</a></li>
-          <li><a href="#showcase">Gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <a href="#contact" className="btn-primary nav-cta">Book Trial</a>
-        <button 
-          className="burger" 
-          id="burger" 
-          aria-label="Menu"
-          onClick={toggleMenu}
-        >
-          <span></span><span></span><span></span>
-        </button>
-      </nav>
 
-      <div className={`mobile-menu ${isOpen ? 'open' : ''}`} id="mobileMenu">
-        <a href="#hero" className="mm-link" onClick={closeMenu}>Home</a>
-        <a href="#about" className="mm-link" onClick={closeMenu}>About</a>
-        <a href="#branches" className="mm-link" onClick={closeMenu}>Branches</a>
-        <a href="#wedding" className="mm-link" onClick={closeMenu}>Wedding</a>
-        <a href="#tv-reality" className="mm-link" onClick={closeMenu}>TV Reality</a>
-        <a href="#showcase" className="mm-link" onClick={closeMenu}>Gallery</a>
-        <a href="#contact" className="mm-link" onClick={closeMenu}>Contact</a>
-        <a href="#contact" className="btn-primary mm-cta" onClick={closeMenu}>Book Trial</a>
+        <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
+          <li><a href="#hero" onClick={() => setIsOpen(false)}>Home</a></li>
+          <li><a href="#about" onClick={() => setIsOpen(false)}>About</a></li>
+          <li><a href="#branches" onClick={() => setIsOpen(false)}>Branches</a></li>
+          <li><a href="#wedding" onClick={() => setIsOpen(false)}>Wedding</a></li>
+          <li><a href="#tv-reality" onClick={() => setIsOpen(false)}>TV Reality</a></li>
+          <li><a href="#contact" onClick={() => setIsOpen(false)}>Contact</a></li>
+          <li className="mobile-only"><a href="#contact" className="btn-primary" onClick={() => setIsOpen(false)}>Book Trial</a></li>
+        </ul>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <a href="#contact" className="btn-primary nav-cta" style={{ padding: '12px 24px', fontSize: '0.9rem' }}>Book Trial</a>
+          <button className={`burger ${isOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
-    </>
+
+      <style jsx>{`
+        .burger {
+          display: none;
+          flex-direction: column;
+          gap: 6px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          z-index: 1001;
+        }
+        .burger span {
+          width: 30px;
+          height: 2px;
+          background: #fff;
+          transition: 0.3s;
+        }
+        .mobile-only { display: none; }
+
+        @media (max-width: 1024px) {
+          .burger { display: flex; }
+          .nav-cta { display: none; }
+          .nav-links {
+            position: fixed;
+            top: 0; right: ${isOpen ? '0' : '-100%'};
+            width: 80%; height: 100vh;
+            background: var(--bg2);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: 0.4s;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            display: flex;
+          }
+          .mobile-only { display: block; margin-top: 20px; }
+        }
+      `}</style>
+    </nav>
   );
 };
 

@@ -4,24 +4,31 @@ import natlReview from '../assets/national-review.mp4';
 
 const VideoReviews = () => {
   return (
-    <section className="video-reviews section" id="video-reviews">
+    <section className="reviews section" id="reviews" style={{ background: 'var(--bg2)' }}>
       <div className="container">
-        <div className="section-header reveal">
-          <span className="section-tag">Global Impact</span>
-          <h2 className="section-title">International & National <em>Reviews</em></h2>
-          <p className="section-sub">Hear directly from our global and local community about their journey with us.</p>
+        <div className="section-header reveal" style={{ textAlign: 'center', marginBottom: '60px' }}>
+          <span className="section-tag">Testimonials</span>
+          <h2 className="section-title">What They <em>Say</em> About Us</h2>
         </div>
-        <div className="reviews-video-grid">
-          <div className="review-video-card reveal" data-delay="0">
-            <h3>International Review</h3>
-            <div className="video-container">
-              <video src={intlReview} controls loop muted playsInline preload="auto"></video>
+
+        <div className="branches-grid"> {/* Reusing 2-column grid */}
+          <div className="branch-card reveal">
+            <div className="video-container" style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden' }}>
+              <video src={intlReview} controls style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+            <div className="branch-info" style={{ textAlign: 'center' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.2rem' }}>International Review</h3>
+              <p style={{ color: 'var(--muted)', fontSize: '0.9rem' }}>Global recognition for our training excellence.</p>
             </div>
           </div>
-          <div className="review-video-card reveal" data-delay="1">
-            <h3>National Review</h3>
-            <div className="video-container">
-              <video src={natlReview} controls loop muted playsInline preload="auto"></video>
+
+          <div className="branch-card reveal">
+            <div className="video-container" style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden' }}>
+              <video src={natlReview} controls style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+            <div className="branch-info" style={{ textAlign: 'center' }}>
+              <h3 style={{ color: 'var(--neon-purple)', fontSize: '1.2rem' }}>National Review</h3>
+              <p style={{ color: 'var(--muted)', fontSize: '0.9rem' }}>Trusted by dancers across India.</p>
             </div>
           </div>
         </div>

@@ -1,46 +1,50 @@
 import React from 'react';
-import weddingVideo from '../assets/wedding.mp4';
-import weddingDance from '../assets/wedding-dance.mp4';
-import weddingStageDance from '../assets/wedding-stage-dance.mp4';
-import weddingPractice from '../assets/wedding-dance-practice.mp4';
-import groomBrideDance from '../assets/gromm-bride-dance.mp4';
+import weddingVid from '../assets/wedding.mp4';
 
 const Wedding = () => {
-  const showcaseVideos = [weddingDance, weddingStageDance, weddingPractice, groomBrideDance];
-
   return (
     <section className="wedding section" id="wedding">
       <div className="container">
-        <div className="wedding-grid">
-          <div className="wedding-content reveal" data-delay="0">
-            <span className="section-tag">Make Your Day Special</span>
-            <h2 className="section-title">Wedding <em>Choreography</em></h2>
-            <p className="section-sub">We craft unforgettable dance routines for your Sangeet, Mehendi, and Wedding ceremonies. Customized specifically for you and your family to make your special day truly magical.</p>
-            <div className="wedding-actions">
+        <div className="about-grid"> {/* Reusing grid for consistent layout */}
+          <div className="about-text reveal">
+            <span className="section-tag">Special Occasions</span>
+            <h2 className="section-title">Premium <em>Wedding</em> Choreography</h2>
+            <p className="about-para" style={{ fontSize: '1.1rem', marginBottom: '24px' }}>
+              Make your big day unforgettable with custom dance routines for Sangeet, Mehendi, and the Wedding day.
+            </p>
+            
+            <ul style={{ listStyle: 'none', marginBottom: '32px' }}>
+              <li style={{ marginBottom: '12px', display: 'flex', gap: '10px' }}>
+                <span style={{ color: 'var(--primary)' }}>✔</span> Custom routines for the whole family
+              </li>
+              <li style={{ marginBottom: '12px', display: 'flex', gap: '10px' }}>
+                <span style={{ color: 'var(--primary)' }}>✔</span> Professional choreography for bride & groom
+              </li>
+              <li style={{ marginBottom: '12px', display: 'flex', gap: '10px' }}>
+                <span style={{ color: 'var(--primary)' }}>✔</span> Music mixing and thematic planning
+              </li>
+            </ul>
+
+            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
               <a href="#contact" className="btn-primary">Book Now</a>
-              <a href="https://www.instagram.com/step_up_wedding_choreography/" target="_blank" rel="noopener noreferrer" className="btn-ig-outline" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" style={{ marginRight: '8px' }}>
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.88z" />
-                </svg>
-                Follow on Instagram
-              </a>
+              <a href="https://instagram.com" className="btn-ghost">View on Instagram</a>
             </div>
           </div>
-          <div className="wedding-video reveal" data-delay="1">
-            <div className="video-container">
-              <video className="academy-video" autoPlay loop muted playsInline>
-                <source src={weddingVideo} type="video/mp4" />
-              </video>
+
+          <div className="about-visual reveal">
+            <div className="about-img-box" style={{ borderRadius: 'var(--r)', overflow: 'hidden', border: '1px solid var(--border)' }}>
+              <video 
+                src={weddingVid} 
+                autoPlay 
+                muted 
+                loop 
+                playsInline 
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
             </div>
-          </div>
-        </div>
-        <div className="wedding-showcase reveal" data-delay="2">
-          <div className="showcase-grid">
-            {showcaseVideos.map((src, i) => (
-              <div key={i} className="showcase-item">
-                <video src={src} loop muted playsInline controls></video>
-              </div>
-            ))}
+            <div style={{ position: 'absolute', top: '20px', right: '20px', background: 'var(--primary)', padding: '10px 20px', borderRadius: '50px', fontWeight: 'bold', fontSize: '0.8rem' }}>
+              LIVE PRACTICE
+            </div>
           </div>
         </div>
       </div>
