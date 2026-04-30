@@ -7,14 +7,14 @@ const Branches = () => {
       name: "Nangloi Delhi",
       address: "Hall No 5 Shiv Market, Nangloi Delhi 110041",
       timing: "10:00 AM – 09:00 PM",
-      video: "/videos/intro-nangloi.mp4",
+      video: "/videos/academy-intro-nangloi-branch.mp4",
       accent: "from-primary/20 to-transparent"
     },
     {
       name: "Bahadurgarh Haryana",
       address: "Opposite Elenta Mart, Bahadurgarh City",
       timing: "10:00 AM – 09:00 PM",
-      video: "/videos/intro-bahadurgarh.mp4",
+      video: "/videos/academy-intro-bahadurgarh-branch.mp4",
       accent: "from-accent/20 to-transparent"
     }
   ];

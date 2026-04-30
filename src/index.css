@@ -23,7 +23,15 @@
   }
   
   .title-serif {
-    @apply font-serif font-medium leading-[1.1] tracking-[-0.02em];
+    font-family: 'Playfair Display', serif !important;
+    @apply font-medium leading-[1.1] tracking-[-0.02em];
+  }
+}
+
+/* Mobile Font Size Tweaks */
+@media (max-width: 768px) {
+  .title-serif {
+    @apply text-4xl leading-[1.1] tracking-tight;
   }
 }
 

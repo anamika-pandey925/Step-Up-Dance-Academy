@@ -24,8 +24,8 @@ const Hero = () => {
             ✦ Premier Dance Academy, with branches in Nangloi, New Delhi and Bahadurgarh, Haryana
           </motion.span>
           
-          <h1 className="title-serif text-6xl md:text-8xl lg:text-9xl mb-8">
-            Move – Express – <br />
+          <h1 className="title-serif text-5xl md:text-8xl lg:text-9xl mb-8">
+            Move – Express – <br className="hidden md:block" />
             <span className="text-primary italic font-serif">Transform.</span>
           </h1>
           

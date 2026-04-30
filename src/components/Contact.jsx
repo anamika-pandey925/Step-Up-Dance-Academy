@@ -9,7 +9,7 @@ const Contact = () => {
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-3 mb-8">
               <img src="/images/logo.jpg.jpeg" alt="Logo" className="w-12 h-12 rounded-full border-2 border-primary" />
-              <span className="text-2xl font-black tracking-tighter">STEP UP <span className="text-primary">DANCE</span></span>
+              <span className="text-2xl font-bold tracking-tight text-white">Step Up <span className="text-primary">Dance Academy</span></span>
             </a>
             <p className="text-white/40 max-w-sm leading-relaxed">
               Leading the way in professional dance training across Delhi and Haryana. Empowering the next generation of performers.
