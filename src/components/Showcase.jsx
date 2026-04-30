@@ -23,11 +23,11 @@ const Showcase = () => {
         <div className="classes-grid">
           {students.map((student, index) => (
             <div key={index} className="class-card reveal" style={{ padding: '0', overflow: 'hidden' }}>
-              <div className="video-container" style={{ aspectRatio: '9/16', background: '#000' }}>
+              <div className="video-container" style={{ width: '100%', height: '400px', background: '#000', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <video 
                   src={student.video} 
                   controls 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                  style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} 
                 />
               </div>
               <div style={{ padding: '20px', textAlign: 'center' }}>

@@ -11,7 +11,7 @@ const Navbar = ({ scrolled }) => {
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
         <a href="#" className="nav-logo">
           <img src={logo} alt="Step Up Logo" className="logo-img" />
-          <span>STEP UP <em>DANCE</em></span>
+          <span>Step Up <span style={{ color: 'var(--primary)' }}>Dance Academy</span></span>
         </a>
 
         <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
@@ -20,6 +20,7 @@ const Navbar = ({ scrolled }) => {
           <li><a href="#branches" onClick={() => setIsOpen(false)}>Branches</a></li>
           <li><a href="#wedding" onClick={() => setIsOpen(false)}>Wedding</a></li>
           <li><a href="#tv-reality" onClick={() => setIsOpen(false)}>TV Reality</a></li>
+          <li><a href="#gallery" onClick={() => setIsOpen(false)}>Gallery</a></li>
           <li><a href="#contact" onClick={() => setIsOpen(false)}>Contact</a></li>
           <li className="mobile-only"><a href="#contact" className="btn-primary" onClick={() => setIsOpen(false)}>Book Trial</a></li>
         </ul>

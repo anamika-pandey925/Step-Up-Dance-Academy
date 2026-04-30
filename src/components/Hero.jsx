@@ -6,7 +6,7 @@ const Hero = () => {
       <div className="hero-grid"></div>
       <div className="container reveal">
         <div className="hero-badge">✦ Premier Dance Academy, with branches in Nangloi, New Delhi and Bahadurgarh, Haryana</div>
-        <h1 className="hero-title title-serif">Move - Express - <br />Transform.</h1>
+        <h1 className="hero-title title-serif">Move - Express - <br /><span style={{ color: 'var(--primary)' }}>Transform.</span></h1>
         <p className="hero-sub">
           Award-winning dance training for all ages & levels in Nangloi, New Delhi & Bahadurgarh Haryana. 
           From Bollywood to All Dance Style — find your rhythm at STEP UP DANCE ACADEMY.

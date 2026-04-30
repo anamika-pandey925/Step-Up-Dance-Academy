@@ -13,8 +13,8 @@ const VideoReviews = () => {
 
         <div className="branches-grid"> {/* Reusing 2-column grid */}
           <div className="branch-card reveal">
-            <div className="video-container" style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden' }}>
-              <video src={intlReview} controls style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <div className="video-container" style={{ width: '100%', height: '300px', background: '#000', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <video src={intlReview} controls style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
             </div>
             <div className="branch-info" style={{ textAlign: 'center' }}>
               <h3 style={{ color: 'var(--primary)', fontSize: '1.2rem' }}>International Review</h3>
@@ -23,8 +23,8 @@ const VideoReviews = () => {
           </div>
 
           <div className="branch-card reveal">
-            <div className="video-container" style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden' }}>
-              <video src={natlReview} controls style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <div className="video-container" style={{ width: '100%', height: '300px', background: '#000', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <video src={natlReview} controls style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
             </div>
             <div className="branch-info" style={{ textAlign: 'center' }}>
               <h3 style={{ color: 'var(--neon-purple)', fontSize: '1.2rem' }}>National Review</h3>
