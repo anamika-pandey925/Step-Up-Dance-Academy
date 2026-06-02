@@ -92,7 +92,7 @@ const Testimonials = () => {
 
         <div className="mt-8 flex justify-center">
           <a 
-            href="https://search.google.com/local/writereview?placeid=ChIJwz84H5wDDTkRlM1Yy87GqJc" 
+            href="https://search.google.com/local/writereview?placeid=ChIJwz84H5wDDTkRIM1Yy87GqJc" 
             target="_blank" 
             rel="noopener noreferrer"
             className="bg-[#ff5a00] text-white font-bold px-8 py-4 rounded-full hover:bg-white hover:text-black transition-colors flex items-center gap-3 shadow-[0_0_20px_rgba(255,90,0,0.3)]"

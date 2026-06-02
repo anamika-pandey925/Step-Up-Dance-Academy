@@ -24,19 +24,39 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-        // Sync/fetch student profile from Firestore
-        await syncStudentProfile(currentUser);
-      } else {
-        setUser(null);
-        setStudentProfile(null);
-      }
+    // Safety timeout: never block the UI longer than 5 seconds
+    const timeout = setTimeout(() => {
       setLoading(false);
-    });
+    }, 5000);
 
-    return () => unsubscribe();
+    let unsubscribe = () => {};
+    try {
+      unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+        clearTimeout(timeout);
+        try {
+          if (currentUser) {
+            setUser(currentUser);
+            await syncStudentProfile(currentUser);
+          } else {
+            setUser(null);
+            setStudentProfile(null);
+          }
+        } catch (err) {
+          console.error('Auth state error:', err);
+        } finally {
+          setLoading(false);
+        }
+      });
+    } catch (err) {
+      console.error('Firebase auth init error:', err);
+      clearTimeout(timeout);
+      setLoading(false);
+    }
+
+    return () => {
+      clearTimeout(timeout);
+      unsubscribe();
+    };
   }, []);
 
   const syncStudentProfile = async (currentUser) => {
@@ -127,7 +147,9 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {/* Always render children — never block the UI on Firebase loading */}
+      {children}
+      {/* Optional: show a loading overlay only on the protected dashboard */}
     </AuthContext.Provider>
   );
 };
