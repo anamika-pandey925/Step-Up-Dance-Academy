@@ -1,74 +1,93 @@
-import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
+import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
 import { motion } from 'framer-motion';
 
-// Import Swiper styles
+import gallery1 from '../assets/Ngallery1.jpeg';
+import gallery2 from '../assets/Ngallery2.jpeg';
+import gallery3 from '../assets/Ngallery3.jpeg';
+import heroBg from '../assets/hero-bg.jpeg';
+import heroBg1 from '../assets/hero-bg1.jpeg';
+import heroBg2 from '../assets/hero-bg2.jpeg';
+import aboutImg from '../assets/Bgallery.jpeg';
+
+// Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import 'swiper/css/effect-coverflow';
 
 const Gallery = () => {
   const images = [
-    "/images/Front.jpeg",
-    "/images/Front2.jpeg",
-    "/images/Award sections.jpeg",
-    "/images/Zumba.png",
-    "/images/Nangloi/Award.jpeg",
-    "/images/Nangloi/Entry.jpeg",
-    "/images/Nangloi/front.jpeg",
+    { src: gallery1, title: "Hip Hop Workshop" },
+    { src: gallery2, title: "Classical Recital" },
+    { src: gallery3, title: "Contemporary Class" },
+    { src: heroBg, title: "Annual Showcase" },
+    { src: heroBg1, title: "Dance Practice" },
+    { src: heroBg2, title: "Stage Performance" },
+    { src: aboutImg, title: "Studio Practice" },
   ];
 
   return (
-    <section id="gallery" className="py-32 bg-bg overflow-hidden">
-      <div className="container mx-auto px-6 mb-20 text-center">
-        <motion.span 
+    <section id="gallery" className="section-padding bg-[#050505] overflow-hidden">
+      <div className="container mx-auto px-6">
+
+        {/* Heading */}
+        <div className="text-center mb-16">
+          <h2 className="text-[#ff5a00] font-bold tracking-widest uppercase text-sm mb-4">
+            Our Gallery
+          </h2>
+          <h3 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
+            Moments of <span className="text-[#ff5a00]">Artistry</span>
+          </h3>
+        </div>
+
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="text-primary text-xs font-black tracking-widest uppercase"
+          viewport={{ once: true }}
+          className="relative px-4"
         >
-          Visual Experience
-        </motion.span>
-        <motion.h2 
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="title-serif text-5xl md:text-6xl mt-4"
-        >
-          Our <span className="text-primary italic">Gallery</span>
-        </motion.h2>
-      </div>
+          <Swiper
+            effect="coverflow"
+            grabCursor
+            centeredSlides
+            slidesPerView="auto"
+            coverflowEffect={{
+              rotate: 30,
+              depth: 120,
+              modifier: 1,
+              slideShadows: false,
+            }}
+            pagination={{ clickable: true }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[EffectCoverflow, Pagination, Autoplay]}
+            className="w-full py-12"
+          >
+            {images.map((img, idx) => (
+              <SwiperSlide
+                key={idx}
+                className="w-[280px] sm:w-[380px] md:w-[450px] h-[280px] sm:h-[380px] rounded-3xl overflow-hidden relative group"
+              >
+                <img
+                  src={img.src}
+                  alt={img.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
 
-      <div className="px-4">
-        <Swiper
-          effect={'coverflow'}
-          grabCursor={true}
-          centeredSlides={true}
-          slidesPerView={'auto'}
-          coverflowEffect={{
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          pagination={{ clickable: true }}
-          modules={[Autoplay, Pagination, Navigation, EffectCoverflow]}
-          className="mySwiper w-full py-12"
-        >
-          {images.map((img, i) => (
-            <SwiperSlide key={i} className="w-[300px] sm:w-[400px] md:w-[500px]">
-              <div className="aspect-[4/5] rounded-premium overflow-hidden border border-white/10 shadow-2xl bg-bg2">
-                <img src={img} alt={`Gallery ${i}`} className="w-full h-full object-cover" />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end p-6">
+                  <p className="text-white text-xl font-bold">
+                    {img.title}
+                  </p>
+                </div>
+
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </motion.div>
+
       </div>
     </section>
   );

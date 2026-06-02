@@ -1,78 +1,41 @@
-import React from 'react';
 import { motion } from 'framer-motion';
+import heroBg from '../assets/hero-bg.jpeg';
+import introVideo from '../assets/intro-nangloi.mp4';
 
 const Videos = () => {
-  const students = [
-    { name: "Manish", video: "/videos/Manish.mp4" },
-    { name: "Anushka", video: "/videos/Anuskha.mp4" },
-    { name: "Navya", video: "/videos/Navya.mp4" },
-    { name: "Mahi", video: "/videos/Mahi.mp4" }
-  ];
-
   return (
-    <section id="videos" className="py-32 bg-bg2">
+    <section id="videos" className="section-padding relative overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-primary text-xs font-black tracking-widest uppercase"
-          >
-            Student Showcase
-          </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="title-serif text-5xl md:text-6xl mt-4"
-          >
-            Stars in <span className="text-primary italic">Action</span>
-          </motion.h2>
+        <div className="text-center mb-16">
+          <h2 className="text-[#ff5a00] font-bold tracking-widest uppercase text-sm mb-4">Experience Step Up</h2>
+          <h3 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Watch Our <span className="text-[#ff5a00]">Story</span></h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {students.map((student, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="glass-card p-0 overflow-hidden group"
-            >
-              <div className="aspect-[9/16] relative bg-black">
-                <video 
-                  src={student.video} 
-                  controls 
-                  className="w-full h-full object-cover" 
-                />
-              </div>
-              <div className="p-6 text-center">
-                <h3 className="font-black text-white text-lg">{student.name}</h3>
-                <p className="text-primary text-[10px] font-black uppercase tracking-widest mt-1">Academy Performer</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="max-w-[360px] mx-auto rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(255,90,0,0.15)] border border-white/10 aspect-[9/16] relative group"
+        >
+          <video
+            className="w-full h-full object-cover bg-black"
+            controls
+            poster={heroBg}
+            muted
+            loop
+            autoPlay
+            playsInline
+          >
+            <source src={introVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
 
-        {/* Featured Video */}
-        <div className="mt-32">
-           <div className="text-center mb-16">
-              <h3 className="title-serif text-4xl">Academy <span className="text-primary italic">Introduction</span></h3>
-           </div>
-           <motion.div 
-             initial={{ opacity: 0, scale: 0.95 }}
-             whileInView={{ opacity: 1, scale: 1 }}
-             className="max-w-5xl mx-auto rounded-premium overflow-hidden border border-white/10 shadow-neon"
-           >
-              <video 
-                src="/videos/intro-video.mp4" 
-                controls 
-                muted 
-                className="w-full aspect-video object-cover" 
-              />
-           </motion.div>
-        </div>
+          <div className="absolute inset-0 pointer-events-none border-[8px] border-black/20 rounded-3xl"></div>
+        </motion.div>
       </div>
+
+      {/* Decorative glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#ff5a00]/5 blur-[120px] -z-10 rounded-full"></div>
     </section>
   );
 };

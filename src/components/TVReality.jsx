@@ -1,67 +1,71 @@
-import React from 'react';
 import { motion } from 'framer-motion';
+import { Tv, Trophy, Star } from 'lucide-react';
+import gallery1 from '../assets/Ngallery1.jpeg';
 
 const TVReality = () => {
-  const teachers = [
-    { name: "Steve Jyrwa", show: "IBD 4 Winner", ig: "stevejyrwa61", img: "/images/TV Reality Training/STEVE JYRWA.jpeg" },
-    { name: "Ashish Chawriya", show: "Dance Plus Pro", ig: "ashish__chawriya", img: "/images/TV Reality Training/ASHISH CHAWRIYA.jpeg" },
-    { name: "Aman Shahi", show: "Hip Hop India", ig: "amanshahi1808", img: "/images/TV Reality Training/AMAN SHAHI.jpeg" },
-    { name: "Abhishek Sharma", show: "IGT Performer", ig: "abhisheksharmaigt", img: "/images/TV Reality Training/ABHISHEK SHARMA.jpeg" }
+  const highlights = [
+    { icon: <Tv size={24} />, title: "National Television", desc: "Our students have featured in major dance reality shows." },
+    { icon: <Trophy size={24} />, title: "Championship Wins", desc: "Winners of 50+ inter-state dance competitions." },
+    { icon: <Star size={24} />, title: "Celebrity Workshops", desc: "Regular training sessions with industry legends." }
   ];
 
   return (
-    <section id="tv-reality" className="py-32 bg-bg2 relative overflow-hidden">
+    <section id="tv-reality" className="section-padding bg-gradient-to-b from-black to-[#0a0a0a]">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-primary text-xs font-black tracking-widest uppercase"
+        <div className="flex flex-col lg:flex-row items-center gap-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:w-1/2"
           >
-            Reality Show Training
-          </motion.span>
-          <h2 className="title-serif text-5xl md:text-6xl mt-4">Celebrity <span className="text-primary italic">Instructors</span></h2>
-        </div>
+            <h2 className="text-[#ff5a00] font-bold tracking-widest uppercase text-sm mb-4">Shine on Stage</h2>
+            <h3 className="text-4xl md:text-5xl font-serif font-bold text-white mb-8 leading-tight">
+              TV Reality <span className="text-[#ff5a00]">Training</span>
+            </h3>
+            <p className="text-gray-400 text-lg mb-12 leading-relaxed">
+              We specialize in preparing students for the big stage. Our intensive training programs are designed to build the confidence, technique, and personality required for television and national competitions.
+            </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {teachers.map((teacher, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="glass-card p-0 overflow-hidden group"
-            >
-              <div className="aspect-[4/5] relative overflow-hidden">
-                <img src={teacher.img} alt={teacher.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-bg2 via-transparent to-transparent"></div>
-                <div className="absolute bottom-6 left-6">
-                  <h3 className="font-black text-xl text-white">{teacher.name}</h3>
-                  <p className="text-primary text-[10px] font-black uppercase tracking-widest">{teacher.show}</p>
+            <div className="space-y-8">
+              {highlights.map((item, idx) => (
+                <div key={idx} className="flex gap-6 group">
+                  <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-[#ff5a00] group-hover:bg-[#ff5a00] group-hover:text-white transition-all duration-300">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-white mb-2">{item.title}</h4>
+                    <p className="text-gray-500">{item.desc}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="p-4 border-t border-white/5 flex justify-between items-center bg-white/5">
-                <span className="text-[10px] font-bold text-white/40">@{teacher.ig}</span>
-                <a href={`https://instagram.com/${teacher.ig}`} target="_blank" className="text-primary text-xs font-bold hover:underline">Follow</a>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              ))}
+            </div>
+          </motion.div>
 
-        {/* Phase Info */}
-        <div className="mt-32 grid grid-cols-1 md:grid-cols-3 gap-8">
-           {[
-             { title: "Phase 1", status: "Sold Out", color: "bg-red-500/20 text-red-500" },
-             { title: "Phase 2", status: "Active", color: "bg-green-500/20 text-green-500" },
-             { title: "Phase 3", status: "Limited", color: "bg-primary/20 text-primary" }
-           ].map((phase, i) => (
-             <div key={i} className={`glass-card text-center border-white/5 ${phase.color}`}>
-                <h4 className="text-2xl font-black mb-2">{phase.title}</h4>
-                <p className="font-bold uppercase tracking-widest text-[10px]">{phase.status}</p>
-             </div>
-           ))}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="lg:w-1/2 relative"
+          >
+            <div className="glass p-4 rounded-[40px] rotate-2 hover:rotate-0 transition-transform duration-500 shadow-2xl">
+              <img 
+                src={gallery1} 
+                alt="Reality Show" 
+                className="rounded-[30px] w-full h-auto"
+              />
+            </div>
+            {/* Overlay badge */}
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10 flex items-center justify-center animate-spin-slow">
+              <div className="text-center">
+                <p className="text-[#ff5a00] font-black text-2xl">100%</p>
+                <p className="text-white text-[10px] uppercase font-bold tracking-tighter">Success Rate</p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
+      
     </section>
   );
 };

@@ -1,62 +1,112 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 const About = () => {
-  return (
-    <section id="about" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:w-1/2"
-          >
-            <div className="inline-block px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
-              ABOUT US
-            </div>
-            <h2 className="title-serif text-6xl md:text-7xl mb-8 leading-tight">
-              Best Dance Academy
-            </h2>
-            <div className="space-y-6 text-white/60 text-lg leading-relaxed mb-10">
-              <p>
-                Step Up Dance Academy has been providing award-winning dance training for many years. Our stylish, well-appointed studios host some of New Delhi’s premier instructors — offering beginner, intermediate, and advanced dance instruction.
-              </p>
-              <p>
-                We also offer taster sessions for those looking to experience new dance styles for the first time. Whatever your passion — celebrate it at our studio!
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {[
-                "All experience levels welcome",
-                "Certified & expert instructors",
-                "Children's graded programs",
-                "TV Reality Show preparation"
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-4 group">
-                  <span className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">✦</span>
-                  <span className="text-sm font-medium text-white/80">{item}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+  // Animation variants
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
 
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:w-1/2 relative"
-          >
-            <div className="relative z-10 rounded-premium overflow-hidden border border-white/10 shadow-2xl">
-              <img src="/images/Front.jpeg" alt="Academy Front" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent opacity-60"></div>
-            </div>
-            {/* Decor */}
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-[80px]"></div>
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-accent/20 rounded-full blur-[80px]"></div>
-          </motion.div>
-        </div>
+  const itemLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
+  const itemRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
+  const itemZoom = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
+  const itemUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
+  return (
+    <section id="about" className="section-padding relative overflow-hidden bg-gradient-to-br from-[#1a0800] via-[#080808] to-[#120500]">
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-[#ff5a00] opacity-[0.04] blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[400px] h-[400px] bg-[#ff5a00] opacity-[0.05] blur-[100px] rounded-full"></div>
+      </div>
+
+      <div className="container mx-auto px-6 max-w-5xl relative z-10">
+        <motion.div 
+          className="flex flex-col items-center gap-12 text-center"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          
+          {/* Text Side */}
+          <div className="w-full">
+            <motion.h2 variants={itemUp} className="text-[#ff5a00] font-bold tracking-widest uppercase text-3xl mb-4">
+              About Us
+            </motion.h2>
+            
+            <motion.h3 variants={itemZoom} className="text-3xl md:text-5xl font-serif font-bold text-white mb-6 leading-tight">
+              Best Dance Academy <br/>
+              <span className="text-[#ff5a00] text-xl md:text-3xl mt-2 block">in Nangloi New Delhi & Bahadurgarh Haryana.</span>
+            </motion.h3>
+
+            <motion.p variants={itemLeft} className="text-gray-400 text-lg mb-6 leading-relaxed max-w-3xl mx-auto">
+              We've been providing award-winning dance training for many years. At Step Up Dance Academy, our stylish, well-appointed studios host some of New Delhi's premier instructors — offering beginner, intermediate, and advanced dance instruction.
+            </motion.p>
+            
+            <motion.p variants={itemRight} className="text-gray-400 text-lg mb-10 leading-relaxed max-w-3xl mx-auto">
+              We also offer taster sessions for those looking to experience new dance styles for the first time. Whatever your passion — celebrate it at our studio!
+            </motion.p>
+
+            <motion.div variants={containerVariants} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-10 text-left">
+              <motion.div variants={itemLeft} className="flex items-center gap-3">
+                <span className="text-[#ff5a00] text-xl">✦</span>
+                <span className="text-gray-300 font-medium">All experience levels welcome</span>
+              </motion.div>
+              <motion.div variants={itemRight} className="flex items-center gap-3">
+                <span className="text-[#ff5a00] text-xl">✦</span>
+                <span className="text-gray-300 font-medium">Certified & expert instructors</span>
+              </motion.div>
+              <motion.div variants={itemLeft} className="flex items-center gap-3">
+                <span className="text-[#ff5a00] text-xl">✦</span>
+                <span className="text-gray-300 font-medium">Children's graded programs</span>
+              </motion.div>
+              <motion.div variants={itemRight} className="flex items-center gap-3">
+                <span className="text-[#ff5a00] text-xl">✦</span>
+                <span className="text-gray-300 font-medium">TV Reality Show preparation</span>
+              </motion.div>
+            </motion.div>
+
+            <motion.div variants={itemZoom} className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-8">
+              <motion.a 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="tel:09555972389" 
+                className="flex items-center gap-3 text-[#ff5a00] font-bold text-xl hover:text-white transition-colors"
+              >
+                <span>📞</span> 09555972389
+              </motion.a>
+              <motion.a 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="tel:07982404565" 
+                className="flex items-center gap-3 text-[#ff5a00] font-bold text-xl hover:text-white transition-colors"
+              >
+                <span>📞</span> 079824 04565
+              </motion.a>
+            </motion.div>
+
+          </div>
+        </motion.div>
       </div>
     </section>
   );

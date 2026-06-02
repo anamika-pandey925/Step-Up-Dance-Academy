@@ -1,31 +1,42 @@
-import React from 'react';
 import { motion } from 'framer-motion';
+import { Phone } from 'lucide-react';
 
 const Floating = () => {
   return (
-    <div className="fixed bottom-10 right-10 z-[2000] flex flex-col gap-4">
-      {/* WhatsApp */}
+    <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[1000] flex flex-col gap-3 md:gap-4">
+      {/* WhatsApp Button */}
       <motion.a
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
         href="https://wa.me/919555972389"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(37,211,102,0.4)]"
-      >
-        <svg width="35" height="35" viewBox="0 0 24 24" fill="white">
-          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91zm5.36 14.16c-.22.62-1.31 1.2-1.83 1.26-.48.06-1.12.18-3.41-.77-2.73-1.14-4.51-3.92-4.65-4.1-.14-.18-1.11-1.48-1.11-2.82 0-1.34.7-2.03.95-2.28.24-.25.53-.31.7-.31.18 0 .35 0 .5.01.16.01.37-.06.57.42.22.53.75 1.83.81 1.96.06.13.11.28.02.46-.09.18-.13.3-.26.44-.13.14-.28.32-.4.44-.13.13-.27.27-.12.53.15.26.68 1.13 1.47 1.83.99.9 1.84 1.18 2.09 1.3.26.13.41.11.57-.08.15-.2.66-.77.83-1.03.18-.27.35-.22.59-.13.24.09 1.54.73 1.81.86.26.13.44.2.5.31.06.11.06.65-.16 1.27z" />
-        </svg>
-      </motion.a>
-
-      {/* Call */}
-      <motion.a
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        href="tel:9555972389"
-        className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-neon"
+        className="w-12 h-12 md:w-14 md:h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl glow-effect group"
       >
-        <span className="text-3xl">📞</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" className="w-6 h-6 md:w-[30px] md:h-[30px]">
+          <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+        </svg>
+        <span className="absolute right-full mr-4 bg-black/80 backdrop-blur-md text-white text-xs py-2 px-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+          Chat on WhatsApp
+        </span>
+      </motion.a>
+
+      {/* Call Button */}
+      <motion.a
+        href="tel:+919555972389"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.2 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="w-12 h-12 md:w-14 md:h-14 bg-[#ff5a00] text-white rounded-full flex items-center justify-center shadow-2xl glow-effect group"
+      >
+        <Phone className="w-5 h-5 md:w-7 md:h-7" fill="currentColor" />
+        <span className="absolute right-full mr-4 bg-black/80 backdrop-blur-md text-white text-xs py-2 px-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+          Call Now
+        </span>
       </motion.a>
     </div>
   );
