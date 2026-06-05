@@ -15,6 +15,7 @@ import Reviews from './components/Reviews';
 import PersonalTraining from './components/PersonalTraining';
 import StudentSpotlight from './components/StudentSpotlight';
 import KavyaSpecial from './components/KavyaSpecial';
+import TVRealityBatch from './components/TVRealityBatch';
 import AcademyShowcase from './components/AcademyShowcase';
 import Facilities from './components/Facilities';
 import Pricing from './components/Pricing';
@@ -89,6 +90,7 @@ const PersonalTrainingPage = () => (
     <PersonalTraining />
     <StudentSpotlight />
     <KavyaSpecial />
+    <TVRealityBatch />
     <Testimonials />
   </main>
 );
