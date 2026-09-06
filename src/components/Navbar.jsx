@@ -214,29 +214,43 @@ const Navbar = () => {
                 </div>
               ))}
               
-              {user && (
-                <div>
-                  <Link to="/dashboard" onClick={() => setIsOpen(false)} className={`text-xl font-medium transition-colors ${location.pathname === '/dashboard' ? 'text-[#ff6b00]' : 'text-[#bdbdbd] hover:text-[#ff6b00]'}`}>
-                    Dashboard
-                  </Link>
-                </div>
-              )}
-
               <Link to="/registration" onClick={() => setIsOpen(false)} className="bg-gradient-to-r from-[#ff6b00] to-[#ff9d4d] text-white px-8 py-3 rounded-full font-bold w-full text-center shadow-[0_0_15px_rgba(255,107,0,0.4)]">
                 Book Trial
               </Link>
 
               {user ? (
-                <button
-                  onClick={() => {
-                    setIsOpen(false);
-                    logout();
-                    navigate('/');
-                  }}
-                  className="text-red-500 font-bold mt-2"
-                >
-                  Logout
-                </button>
+                <div className="w-full flex flex-col items-center gap-3 pt-4 mt-2 border-t border-white/10">
+                  <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-3 rounded-2xl w-full justify-between">
+                    <div className="flex items-center gap-3 truncate min-w-0">
+                      <img
+                        src={studentProfile?.photoURL || user.photoURL || 'https://via.placeholder.com/150'}
+                        alt="Profile"
+                        className="w-10 h-10 rounded-full border-2 border-[#ff6b00] object-cover shrink-0 shadow-[0_0_10px_rgba(255,107,0,0.3)]"
+                      />
+                      <div className="text-left truncate min-w-0">
+                        <p className="text-sm font-bold text-white truncate">{studentProfile?.name || user.displayName || 'Student'}</p>
+                        <p className="text-[10px] text-gray-400 truncate">{studentProfile?.email || user.email}</p>
+                      </div>
+                    </div>
+                    <Link
+                      to="/dashboard"
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center gap-1.5 bg-[#ff6b00]/20 border border-[#ff6b00]/40 text-[#ff9d4d] px-3 py-1.5 rounded-xl text-xs font-bold hover:bg-[#ff6b00] hover:text-white transition-all shrink-0"
+                    >
+                      <LayoutDashboard size={14} /> Dashboard
+                    </Link>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setIsOpen(false);
+                      logout();
+                      navigate('/');
+                    }}
+                    className="flex items-center justify-center gap-2 text-red-400 hover:text-red-300 text-sm font-semibold py-1 cursor-pointer"
+                  >
+                    <LogOut size={15} /> Logout
+                  </button>
+                </div>
               ) : (
                 <Link
                   to="/login"
