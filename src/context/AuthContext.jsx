@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { auth, db } from '../firebase';
 import { 
   onAuthStateChanged, 
@@ -23,8 +23,37 @@ export const AuthProvider = ({ children }) => {
   const [studentProfile, setStudentProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const syncStudentProfile = useCallback(async (currentUser) => {
+    try {
+      const studentDocRef = doc(db, 'students', currentUser.uid);
+      const studentDoc = await getDoc(studentDocRef);
+
+      if (!studentDoc.exists()) {
+        const newProfile = {
+          uid: currentUser.uid,
+          name: currentUser.displayName || '',
+          email: currentUser.email || '',
+          photoURL: currentUser.photoURL || '',
+          phone: '',
+          age: '',
+          registeredStyles: [],
+          createdAt: serverTimestamp(),
+          lastLogin: serverTimestamp()
+        };
+        await setDoc(studentDocRef, newProfile);
+        setStudentProfile(newProfile);
+      } else {
+        await updateDoc(studentDocRef, {
+          lastLogin: serverTimestamp()
+        });
+        setStudentProfile(studentDoc.data());
+      }
+    } catch (error) {
+      console.error("Error syncing student profile:", error);
+    }
+  }, []);
+
   useEffect(() => {
-    // Safety timeout: never block the UI longer than 5 seconds
     const timeout = setTimeout(() => {
       setLoading(false);
     }, 5000);
@@ -49,47 +78,13 @@ export const AuthProvider = ({ children }) => {
       });
     } catch (err) {
       console.error('Firebase auth init error:', err);
-      clearTimeout(timeout);
-      setLoading(false);
     }
 
     return () => {
       clearTimeout(timeout);
       unsubscribe();
     };
-  }, []);
-
-  const syncStudentProfile = async (currentUser) => {
-    try {
-      const studentDocRef = doc(db, 'students', currentUser.uid);
-      const studentDoc = await getDoc(studentDocRef);
-
-      if (!studentDoc.exists()) {
-        // Create initial student record
-        const newProfile = {
-          uid: currentUser.uid,
-          name: currentUser.displayName || '',
-          email: currentUser.email || '',
-          photoURL: currentUser.photoURL || '',
-          phone: '',
-          age: '',
-          registeredStyles: [],
-          createdAt: serverTimestamp(),
-          lastLogin: serverTimestamp()
-        };
-        await setDoc(studentDocRef, newProfile);
-        setStudentProfile(newProfile);
-      } else {
-        // Update last login
-        await updateDoc(studentDocRef, {
-          lastLogin: serverTimestamp()
-        });
-        setStudentProfile(studentDoc.data());
-      }
-    } catch (error) {
-      console.error("Error syncing student profile:", error);
-    }
-  };
+  }, [syncStudentProfile]);
 
   const loginWithGoogle = async () => {
     setLoading(true);

@@ -26,6 +26,8 @@ const Reviews = () => {
               <video 
                 src={internationalVid}
                 controls
+                preload="none"
+                playsInline
                 className="w-full object-cover aspect-[9/16]"
               />
               <div className="absolute inset-0 pointer-events-none border-[8px] border-black/20 rounded-3xl"></div>
@@ -45,6 +47,8 @@ const Reviews = () => {
               <video 
                 src={nationalVid}
                 controls
+                preload="none"
+                playsInline
                 className="w-full object-cover aspect-[9/16]"
               />
               <div className="absolute inset-0 pointer-events-none border-[8px] border-black/20 rounded-3xl"></div>

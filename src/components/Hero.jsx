@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, Suspense, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useTexture, Environment, Float, PresentationControls, Html } from '@react-three/drei';
+import { useTexture, Float, PresentationControls, Html } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
 import heroBg1 from '../assets/hero-bg.jpeg';
@@ -72,17 +72,17 @@ const RotatingCard = () => {
   );
 };
 
+const INITIAL_PARTICLES = Array.from({ length: 20 }).map((_, i) => ({
+  id: i,
+  size: ((i * 7) % 4) + 2,
+  top: `${(i * 19) % 100}%`,
+  left: `${(i * 23) % 100}%`,
+  duration: ((i * 3) % 10) + 10,
+  delay: (i * 2) % 5,
+}));
+
 export default function Hero() {
-  // Generate random particles
-  // eslint-disable-next-line react-hooks/purity
-  const particles = useMemo(() => Array.from({ length: 20 }).map((_, i) => ({
-    id: i,
-    size: Math.random() * 4 + 2,
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    duration: Math.random() * 10 + 10,
-    delay: Math.random() * 5,
-  })), []);
+  const particles = INITIAL_PARTICLES;
 
   return (
     <section className="relative min-h-screen flex items-center px-6 md:px-16 overflow-hidden bg-[#080808]">
@@ -259,17 +259,19 @@ export default function Hero() {
           <Canvas shadows={{ type: THREE.PCFShadowMap }} camera={{ position: [0, 0, 6], fov: 45 }}>
             <Suspense fallback={
               <Html center>
-                <div className="text-[#ff9d4d] animate-pulse font-bold whitespace-nowrap tracking-widest">LOADING 3D...</div>
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-8 h-8 border-2 border-[#ff6b00] border-t-transparent rounded-full animate-spin"></div>
+                  <span className="text-[#ff9d4d] text-xs font-bold whitespace-nowrap tracking-widest uppercase">Loading 3D</span>
+                </div>
               </Html>
             }>
-              {/* Cinematic Soft Lighting */}
-              <ambientLight intensity={0.4} />
-              <directionalLight position={[5, 10, 5]} intensity={1.5} castShadow shadow-mapSize={[1024, 1024]} color="#ffffff" />
-              <spotLight position={[-5, 5, 5]} intensity={2} angle={0.4} penumbra={1} color="#ff6b00" />
-              <pointLight position={[0, -5, 2]} intensity={1} color="#ff9d4d" />
-
-              {/* Environment Reflection */}
-              <Environment preset="night" />
+              {/* Studio Lighting */}
+              <ambientLight intensity={0.9} />
+              <directionalLight position={[5, 10, 5]} intensity={2.0} castShadow shadow-mapSize={[1024, 1024]} color="#ffffff" />
+              <directionalLight position={[-5, -5, -3]} intensity={0.8} color="#ff9d4d" />
+              <spotLight position={[-5, 5, 5]} intensity={2.2} angle={0.5} penumbra={1} color="#ff6b00" />
+              <pointLight position={[0, -4, 3]} intensity={1.5} color="#ff9d4d" />
+              <pointLight position={[0, 4, 3]} intensity={1.2} color="#ffffff" />
 
               {/* Rotating Card */}
               <RotatingCard />

@@ -36,6 +36,8 @@ const KavyaSpecial = () => {
                 <video 
                   src={item.video}
                   controls
+                  preload="none"
+                  playsInline
                   className="w-full object-cover aspect-[9/16]"
                 />
                 <div className="absolute inset-0 pointer-events-none border-[6px] border-black/20 rounded-2xl"></div>

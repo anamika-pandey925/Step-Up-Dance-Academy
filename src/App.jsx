@@ -1,35 +1,44 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import './index.css';
 
-// Components
+// Core components for instant initial home page render
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
 import About from './components/About';
 import Founder from './components/Founder';
-import Branches from './components/Branches';
 import Classes from './components/Classes';
-import Wedding from './components/Wedding';
-import Reviews from './components/Reviews';
-import PersonalTraining from './components/PersonalTraining';
-import StudentSpotlight from './components/StudentSpotlight';
-import KavyaSpecial from './components/KavyaSpecial';
-import TVRealityBatch from './components/TVRealityBatch';
-import AcademyShowcase from './components/AcademyShowcase';
-import Facilities from './components/Facilities';
-import Pricing from './components/Pricing';
-import ZumbaFitness from './components/ZumbaFitness';
 import Testimonials from './components/Testimonials';
-import Contact from './components/Contact';
-import Booking from './components/Booking';
-import Login from './components/Login';
-import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 import Floating from './components/Floating';
 
+// Lazy-loaded route components (Code Splitting for instant load)
+const Branches = lazy(() => import('./components/Branches'));
+const AcademyShowcase = lazy(() => import('./components/AcademyShowcase'));
+const Wedding = lazy(() => import('./components/Wedding'));
+const Reviews = lazy(() => import('./components/Reviews'));
+const ZumbaFitness = lazy(() => import('./components/ZumbaFitness'));
+const Facilities = lazy(() => import('./components/Facilities'));
+const Pricing = lazy(() => import('./components/Pricing'));
+const Contact = lazy(() => import('./components/Contact'));
+const Booking = lazy(() => import('./components/Booking'));
+const Login = lazy(() => import('./components/Login'));
+const Dashboard = lazy(() => import('./components/Dashboard'));
+const PersonalTraining = lazy(() => import('./components/PersonalTraining'));
+const StudentSpotlight = lazy(() => import('./components/StudentSpotlight'));
+const KavyaSpecial = lazy(() => import('./components/KavyaSpecial'));
+const TVRealityBatch = lazy(() => import('./components/TVRealityBatch'));
+
 // Context
 import { AuthProvider, useAuth } from './context/AuthContext';
+
+const PageLoader = () => (
+  <div className="min-h-[60vh] flex flex-col items-center justify-center gap-3">
+    <div className="w-10 h-10 border-3 border-[#ff6b00] border-t-transparent rounded-full animate-spin"></div>
+    <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase">Loading...</span>
+  </div>
+);
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -103,23 +112,25 @@ function App() {
         <div className="bg-[#050505] text-white selection:bg-[#ff5a00] selection:text-white">
           <Navbar />
           
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/branches" element={<BranchesPage />} />
-            <Route path="/wedding" element={<WeddingPage />} />
-            <Route path="/zumba" element={<ZumbaPage />} />
-            <Route path="/facilities" element={<FacilitiesPage />} />
-            <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/registration" element={<RegistrationPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/dashboard" element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            } />
-            <Route path="/personal-training" element={<PersonalTrainingPage />} />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/branches" element={<BranchesPage />} />
+              <Route path="/wedding" element={<WeddingPage />} />
+              <Route path="/zumba" element={<ZumbaPage />} />
+              <Route path="/facilities" element={<FacilitiesPage />} />
+              <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/registration" element={<RegistrationPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="/personal-training" element={<PersonalTrainingPage />} />
+            </Routes>
+          </Suspense>
 
           <Footer />
           <Floating />

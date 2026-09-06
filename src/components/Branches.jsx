@@ -69,6 +69,8 @@ const Branches = () => {
                 <video
                   src={nangloiVideo}
                   controls
+                  preload="none"
+                  playsInline
                   className="w-full max-w-[400px] object-cover rounded-2xl shadow-xl aspect-[9/16] bg-black"
                 />
               </div>
@@ -146,6 +148,8 @@ const Branches = () => {
                 <video
                   src={bahadurgarhVideo}
                   controls
+                  preload="none"
+                  playsInline
                   className="w-full max-w-[400px] object-cover rounded-2xl shadow-xl aspect-[9/16] bg-black"
                 />
               </div>

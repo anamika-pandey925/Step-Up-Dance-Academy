@@ -21,9 +21,9 @@ const Videos = () => {
             className="w-full h-full object-cover bg-black"
             controls
             poster={heroBg}
+            preload="none"
             muted
             loop
-            autoPlay
             playsInline
           >
             <source src={introVideo} type="video/mp4" />

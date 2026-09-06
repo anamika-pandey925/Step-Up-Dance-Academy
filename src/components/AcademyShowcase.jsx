@@ -74,6 +74,8 @@ const AcademyShowcase = () => {
                 <video 
                   src={performer.video}
                   controls
+                  preload="none"
+                  playsInline
                   className="w-full h-full object-cover"
                 />
               </div>
