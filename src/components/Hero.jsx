@@ -1,76 +1,9 @@
-import { useState, useEffect, useRef, Suspense, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { useTexture, Float, PresentationControls, Html } from '@react-three/drei';
+import { useState, useEffect, Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
-import * as THREE from 'three';
-import heroBg1 from '../assets/hero-bg.jpeg';
-import heroBg2 from '../assets/hero-bg1.jpeg';
-import heroBg3 from '../assets/hero-bg2.jpeg';
+import heroBg1 from '../assets/hero-bg.webp';
 
-// 3D Model Component
-const RotatingCard = () => {
-  const meshRef = useRef();
-  // Load textures
-  const textures = useTexture([heroBg1, heroBg2, heroBg3]);
-  const [index, setIndex] = useState(0);
-  const [scale, setScale] = useState(1);
-
-  useEffect(() => {
-    // Auto-change image every 3.5 seconds
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % textures.length);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, [textures.length]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const w = window.innerWidth;
-      if (w < 640) {
-        setScale(0.65);
-      } else if (w < 1024) {
-        setScale(0.85);
-      } else {
-        setScale(1);
-      }
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [textures.length]);
-
-  useFrame((state, delta) => {
-    // Smooth auto-rotation
-    if (meshRef.current) {
-      meshRef.current.rotation.y += delta * 0.3;
-    }
-  });
-
-  return (
-    <PresentationControls
-      global
-      rotation={[0, 0.1, 0]}
-      polar={[-0.2, 0.2]}
-      azimuth={[-0.5, 0.5]}
-      config={{ mass: 2, tension: 400 }}
-      snap={{ mass: 4, tension: 400 }}
-    >
-      <Float speed={2} rotationIntensity={0.5} floatIntensity={1.5}>
-        <mesh ref={meshRef} castShadow receiveShadow scale={scale}>
-          {/* Card size: width 2.8, height 3.8, depth 0.05 (portrait aspect ratio for normal images) */}
-          <boxGeometry args={[2.8, 3.8, 0.05]} />
-          {/* Material array for the 6 faces of the box */}
-          <meshStandardMaterial attach="material-0" color="#222" roughness={0.8} />
-          <meshStandardMaterial attach="material-1" color="#222" roughness={0.8} />
-          <meshStandardMaterial attach="material-2" color="#222" roughness={0.8} />
-          <meshStandardMaterial attach="material-3" color="#222" roughness={0.8} />
-          <meshStandardMaterial attach="material-4" map={textures[index]} roughness={0.2} metalness={0.5} />
-          <meshStandardMaterial attach="material-5" map={textures[index]} roughness={0.2} metalness={0.5} />
-        </mesh>
-      </Float>
-    </PresentationControls>
-  );
-};
+// Lazy-load the heavy 3D canvas so it doesn't block initial page render
+const Hero3DCard = lazy(() => import('./Hero3DCard'));
 
 const INITIAL_PARTICLES = Array.from({ length: 20 }).map((_, i) => ({
   id: i,
@@ -81,8 +14,40 @@ const INITIAL_PARTICLES = Array.from({ length: 20 }).map((_, i) => ({
   delay: (i * 2) % 5,
 }));
 
+// Instant visual preview displayed while 3D chunk is downloaded & initialized
+const HeroCardPreview = () => (
+  <div className="relative w-[240px] h-[320px] md:w-[300px] md:h-[400px] lg:w-[360px] lg:h-[490px] rounded-3xl overflow-hidden border-2 border-[#ff6b00]/40 shadow-[0_0_35px_rgba(255,107,0,0.3)] group transform hover:scale-[1.02] transition-transform duration-500">
+    <img
+      src={heroBg1}
+      alt="Step Up Dance Academy"
+      fetchPriority="high"
+      loading="eager"
+      decoding="async"
+      className="w-full h-full object-cover"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
+    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-[#ff9d4d] font-semibold tracking-wider uppercase">
+      <span>✦ Step Up Academy</span>
+      <span className="w-2 h-2 rounded-full bg-[#ff6b00] animate-ping" />
+    </div>
+  </div>
+);
+
 export default function Hero() {
   const particles = INITIAL_PARTICLES;
+  const [load3D, setLoad3D] = useState(false);
+
+  // Progressive enhancement: start loading 3D after initial paint
+  useEffect(() => {
+    // Load 3D immediately after mount or on idle
+    if ('requestIdleCallback' in window) {
+      const handle = window.requestIdleCallback(() => setLoad3D(true), { timeout: 1500 });
+      return () => window.cancelIdleCallback(handle);
+    } else {
+      const timer = setTimeout(() => setLoad3D(true), 200);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center px-6 md:px-16 overflow-hidden bg-[#080808]">
@@ -120,7 +85,6 @@ export default function Hero() {
 
         {/* LEFT CONTENT */}
         <div className="flex flex-col gap-6 relative z-10">
-
 
           {/* TITLE */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold text-white leading-[1.1] flex flex-col gap-1 relative z-10">
@@ -245,7 +209,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* RIGHT VISUAL - 3D CANVAS */}
+        {/* RIGHT VISUAL - 3D CANVAS / INSTANT PREVIEW */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -256,27 +220,13 @@ export default function Hero() {
           <div className="absolute w-[240px] h-[320px] md:w-[320px] md:h-[440px] lg:w-[420px] lg:h-[570px] bg-gradient-to-tr from-[#ff6b00]/10 to-transparent border border-white/5 rounded-[3rem] backdrop-blur-sm -z-10 shadow-[0_0_50px_rgba(255,107,0,0.15)] animate-float"></div>
           <div className="absolute w-[220px] h-[300px] md:w-[300px] md:h-[400px] lg:w-[380px] lg:h-[520px] bg-white/[0.01] rounded-[2.5rem] -z-10 rotate-3 border border-white/5 animate-pulse"></div>
 
-          <Canvas shadows={{ type: THREE.PCFShadowMap }} camera={{ position: [0, 0, 6], fov: 45 }}>
-            <Suspense fallback={
-              <Html center>
-                <div className="flex flex-col items-center gap-2">
-                  <div className="w-8 h-8 border-2 border-[#ff6b00] border-t-transparent rounded-full animate-spin"></div>
-                  <span className="text-[#ff9d4d] text-xs font-bold whitespace-nowrap tracking-widest uppercase">Loading 3D</span>
-                </div>
-              </Html>
-            }>
-              {/* Studio Lighting */}
-              <ambientLight intensity={0.9} />
-              <directionalLight position={[5, 10, 5]} intensity={2.0} castShadow shadow-mapSize={[1024, 1024]} color="#ffffff" />
-              <directionalLight position={[-5, -5, -3]} intensity={0.8} color="#ff9d4d" />
-              <spotLight position={[-5, 5, 5]} intensity={2.2} angle={0.5} penumbra={1} color="#ff6b00" />
-              <pointLight position={[0, -4, 3]} intensity={1.5} color="#ff9d4d" />
-              <pointLight position={[0, 4, 3]} intensity={1.2} color="#ffffff" />
-
-              {/* Rotating Card */}
-              <RotatingCard />
+          {load3D ? (
+            <Suspense fallback={<HeroCardPreview />}>
+              <Hero3DCard />
             </Suspense>
-          </Canvas>
+          ) : (
+            <HeroCardPreview />
+          )}
 
         </motion.div>
       </div>

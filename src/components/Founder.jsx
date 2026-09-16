@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import mraddyImg from '../assets/mraddy.jpeg';
+import mraddyImg from '../assets/mraddy.webp';
 
 const Founder = () => {
   return (
@@ -20,6 +20,10 @@ const Founder = () => {
                 transition={{ duration: 0.5 }}
                 src={mraddyImg} 
                 alt="ADDY SIR" 
+                loading="lazy"
+                decoding="async"
+                width="640"
+                height="773"
                 className="w-full h-auto object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 transition-opacity duration-500"></div>

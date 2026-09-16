@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
-import classicalIcon from '../assets/classical-icon.jpg';
-import kidsIcon from '../assets/kids-icon.png';
-import hiphopIcon from '../assets/hip-hop.jpg';
-import contemporaryIcon from '../assets/contemporary-icon.png';
+import classicalIcon from '../assets/classical-icon.webp';
+import kidsIcon from '../assets/kids-icon.webp';
+import hiphopIcon from '../assets/hip-hop.webp';
+import contemporaryIcon from '../assets/contemporary-icon.webp';
 
 const classesData = [
   {
@@ -65,7 +65,15 @@ const Classes = () => {
             >
               <div className="text-4xl mb-4 flex items-center justify-start h-16 w-16">
                 {cls.icon && cls.icon.length > 5 ? (
-                  <img src={cls.icon} alt={cls.title} className="w-full h-full object-contain" />
+                  <img 
+                    src={cls.icon} 
+                    alt={cls.title} 
+                    width="64"
+                    height="64"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-contain" 
+                  />
                 ) : (
                   cls.icon
                 )}

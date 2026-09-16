@@ -2,16 +2,18 @@ import React, { useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import './index.css';
 
-// Core components for instant initial home page render
+// Core above-the-fold components for instant initial home page render
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
-import About from './components/About';
-import Founder from './components/Founder';
-import Classes from './components/Classes';
-import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 import Floating from './components/Floating';
+
+// Below-the-fold home page components (Code-split for instant viewport painting)
+const About = lazy(() => import('./components/About'));
+const Founder = lazy(() => import('./components/Founder'));
+const Classes = lazy(() => import('./components/Classes'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
 
 // Lazy-loaded route components (Code Splitting for instant load)
 const Branches = lazy(() => import('./components/Branches'));
@@ -67,10 +69,12 @@ const HomePage = () => (
   <main>
     <Hero />
     <Marquee />
-    <About />
-    <Founder />
-    <Classes />
-    <Testimonials />
+    <Suspense fallback={null}>
+      <About />
+      <Founder />
+      <Classes />
+      <Testimonials />
+    </Suspense>
   </main>
 );
 
@@ -78,29 +82,82 @@ const BranchesPage = () => (
   <main className="pt-24 min-h-screen">
     <Branches />
     <AcademyShowcase />
-    <Testimonials />
+    <Suspense fallback={null}>
+      <Testimonials />
+    </Suspense>
   </main>
 );
+
 const WeddingPage = () => (
   <main className="pt-24 min-h-screen">
     <Wedding />
     <Reviews />
-    <Testimonials />
+    <Suspense fallback={null}>
+      <Testimonials />
+    </Suspense>
   </main>
 );
-const ZumbaPage = () => <main className="pt-24 min-h-screen"><ZumbaFitness /><Testimonials /></main>;
-const FacilitiesPage = () => <main className="pt-24 min-h-screen"><Facilities /><Testimonials /></main>;
-const PricingPage = () => <main className="pt-24 min-h-screen"><Pricing /><Testimonials /></main>;
-const ContactPage = () => <main className="pt-24 min-h-screen"><Contact /><Testimonials /></main>;
-const RegistrationPage = () => <main className="pt-24 min-h-screen"><Booking /><Testimonials /></main>;
-const LoginPage = () => <main className="pt-24 min-h-screen flex items-center justify-center"><Login /></main>;
+
+const ZumbaPage = () => (
+  <main className="pt-24 min-h-screen">
+    <ZumbaFitness />
+    <Suspense fallback={null}>
+      <Testimonials />
+    </Suspense>
+  </main>
+);
+
+const FacilitiesPage = () => (
+  <main className="pt-24 min-h-screen">
+    <Facilities />
+    <Suspense fallback={null}>
+      <Testimonials />
+    </Suspense>
+  </main>
+);
+
+const PricingPage = () => (
+  <main className="pt-24 min-h-screen">
+    <Pricing />
+    <Suspense fallback={null}>
+      <Testimonials />
+    </Suspense>
+  </main>
+);
+
+const ContactPage = () => (
+  <main className="pt-24 min-h-screen">
+    <Contact />
+    <Suspense fallback={null}>
+      <Testimonials />
+    </Suspense>
+  </main>
+);
+
+const RegistrationPage = () => (
+  <main className="pt-24 min-h-screen">
+    <Booking />
+    <Suspense fallback={null}>
+      <Testimonials />
+    </Suspense>
+  </main>
+);
+
+const LoginPage = () => (
+  <main className="pt-24 min-h-screen flex items-center justify-center">
+    <Login />
+  </main>
+);
+
 const PersonalTrainingPage = () => (
   <main className="pt-24 min-h-screen">
     <PersonalTraining />
     <StudentSpotlight />
     <KavyaSpecial />
     <TVRealityBatch />
-    <Testimonials />
+    <Suspense fallback={null}>
+      <Testimonials />
+    </Suspense>
   </main>
 );
 

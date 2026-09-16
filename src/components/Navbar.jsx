@@ -1,35 +1,22 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, LogOut, LayoutDashboard } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.jpg';
-import { useAuth } from '../context/AuthContext';
+import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import logo from '../assets/logo.webp';
 
 const MotionLink = motion.create(Link);
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const dropdownRef = useRef(null);
   const location = useLocation();
-  const navigate = useNavigate();
-  const { user, studentProfile, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
 
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setShowDropdown(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -65,6 +52,10 @@ const Navbar = () => {
               <motion.img 
                 src={logo} 
                 alt="Step Up" 
+                width="64"
+                height="64"
+                loading="eager"
+                decoding="async"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ duration: 0.3 }}
                 className="w-14 h-14 md:w-16 md:h-16 rounded-full border-2 border-[#ff6b00] object-cover relative z-10 shadow-[0_0_15px_rgba(255,107,0,0.5)]" 
@@ -120,68 +111,6 @@ const Navbar = () => {
           >
             Book Trial
           </MotionLink>
-
-          {user ? (
-            <div className="relative" ref={dropdownRef}>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setShowDropdown(!showDropdown)}
-                className="flex items-center gap-2 focus:outline-none cursor-pointer"
-              >
-                <img
-                  src={studentProfile?.photoURL || user.photoURL || 'https://via.placeholder.com/150'}
-                  alt="Profile"
-                  className="w-10 h-10 rounded-full border-2 border-[#ff6b00] object-cover shadow-[0_0_10px_rgba(255,107,0,0.3)]"
-                />
-              </motion.button>
-              
-              <AnimatePresence>
-                {showDropdown && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute right-0 mt-3 w-48 bg-[#0a0a0a]/90 backdrop-blur-2xl border border-white/10 rounded-2xl py-2 shadow-2xl z-[1100]"
-                  >
-                    <div className="px-4 py-2 border-b border-white/5">
-                      <p className="text-sm font-bold text-white truncate">{studentProfile?.name || user.displayName || 'Student'}</p>
-                      <p className="text-[10px] text-gray-500 truncate">{studentProfile?.email || user.email}</p>
-                    </div>
-                    <Link
-                      to="/dashboard"
-                      onClick={() => setShowDropdown(false)}
-                      className="flex items-center gap-2 px-4 py-2.5 text-sm text-[#bdbdbd] hover:text-white hover:bg-white/5 transition-colors"
-                    >
-                      <LayoutDashboard size={16} className="text-[#ff6b00]" /> Dashboard
-                    </Link>
-                    <button
-                      onClick={() => {
-                        setShowDropdown(false);
-                        logout();
-                        navigate('/');
-                      }}
-                      className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-[#bdbdbd] hover:text-red-500 hover:bg-white/5 transition-colors text-left cursor-pointer"
-                    >
-                      <LogOut size={16} /> Logout
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ) : (
-            <MotionLink
-              to="/login"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.1, duration: 0.5, type: "spring" }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="border border-white/10 hover:border-[#ff6b00] text-white px-5 py-2.5 rounded-full font-bold transition-all text-sm shadow-[0_0_10px_rgba(255,107,0,0.1)]"
-            >
-              Login
-            </MotionLink>
-          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -217,49 +146,6 @@ const Navbar = () => {
               <Link to="/registration" onClick={() => setIsOpen(false)} className="bg-gradient-to-r from-[#ff6b00] to-[#ff9d4d] text-white px-8 py-3 rounded-full font-bold w-full text-center shadow-[0_0_15px_rgba(255,107,0,0.4)]">
                 Book Trial
               </Link>
-
-              {user ? (
-                <div className="w-full flex flex-col items-center gap-3 pt-4 mt-2 border-t border-white/10">
-                  <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-3 rounded-2xl w-full justify-between">
-                    <div className="flex items-center gap-3 truncate min-w-0">
-                      <img
-                        src={studentProfile?.photoURL || user.photoURL || 'https://via.placeholder.com/150'}
-                        alt="Profile"
-                        className="w-10 h-10 rounded-full border-2 border-[#ff6b00] object-cover shrink-0 shadow-[0_0_10px_rgba(255,107,0,0.3)]"
-                      />
-                      <div className="text-left truncate min-w-0">
-                        <p className="text-sm font-bold text-white truncate">{studentProfile?.name || user.displayName || 'Student'}</p>
-                        <p className="text-[10px] text-gray-400 truncate">{studentProfile?.email || user.email}</p>
-                      </div>
-                    </div>
-                    <Link
-                      to="/dashboard"
-                      onClick={() => setIsOpen(false)}
-                      className="flex items-center gap-1.5 bg-[#ff6b00]/20 border border-[#ff6b00]/40 text-[#ff9d4d] px-3 py-1.5 rounded-xl text-xs font-bold hover:bg-[#ff6b00] hover:text-white transition-all shrink-0"
-                    >
-                      <LayoutDashboard size={14} /> Dashboard
-                    </Link>
-                  </div>
-                  <button
-                    onClick={() => {
-                      setIsOpen(false);
-                      logout();
-                      navigate('/');
-                    }}
-                    className="flex items-center justify-center gap-2 text-red-400 hover:text-red-300 text-sm font-semibold py-1 cursor-pointer"
-                  >
-                    <LogOut size={15} /> Logout
-                  </button>
-                </div>
-              ) : (
-                <Link
-                  to="/login"
-                  onClick={() => setIsOpen(false)}
-                  className="text-white border border-white/10 hover:border-[#ff6b00] px-8 py-3 rounded-full font-bold w-full text-center mt-2"
-                >
-                  Login
-                </Link>
-              )}
             </div>
           </motion.div>
         )}
